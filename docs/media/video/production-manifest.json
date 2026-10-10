@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-10T22:12:30.293Z",
+  "sourceRepository": "https://github.com/Helio965/Globe-Express",
+  "sourceGitSHA": "14c94113f88692edf0eca8bf38308fc6dfdeb1b9",
+  "captureProvider": "open",
+  "source": {
+    "file": "world-explorer-browser.webm",
+    "bytes": 58874212,
+    "sha256": "23bef1c7e54fb89b23d16f6955c7d25c33f28df538b97577ec1e57a99be99e57",
+    "codec": "vp9",
+    "width": 1920,
+    "height": 960,
+    "duration": 98.766,
+    "timelineClock": "Monotonic clock starts immediately after page creation. Inspect raw first frames and calibrate any recorder lead before rendering subtitles.",
+    "possibleRecorderLeadSeconds": 0.235
+  },
+  "editing": {
+    "originalInterface": "Continuous, genuine browser recording; no resizing, crop, screenshots used as video, mocks, or generated imagery.",
+    "colorConversion": "Full-range source normalized to limited-range yuv420p for compatible H.264 playback. Pixel dimensions are unchanged.",
+    "subtitleBand": {
+      "x": 0,
+      "y": 960,
+      "width": 1920,
+      "height": 120,
+      "fontFamily": "Open Sans",
+      "captionSizePixels": 32
+    },
+    "timelineOffsetSeconds": 0.235,
+    "calibrationNote": "Trim equals the recorded 0.235-second page-creation interval. Initial frames were inspected; the genuine page loading and GSAP animation are preserved. This interval is measured, not an asserted exact media-clock offset.",
+    "sceneOrderUnchanged": true,
+    "soundtrack": "None: adequate Brazilian Portuguese narration unavailable. Portuguese captions and explanatory text are included, as authorized in the request.",
+    "openStreetMapAttribution": "Scenes 2–3 preserve the native attribution and also display © OpenStreetMap contributors · https://www.openstreetmap.org/copyright in the editorial band.",
+    "encoding": {
+      "codec": "libx264",
+      "bitrate": 1836116,
+      "passes": 2,
+      "preset": "medium"
+    },
+    "faststart": true
+  },
+  "video": {
+    "file": "docs/media/video/world-explorer-demo.mp4",
+    "bytes": 22606541,
+    "sha256": "80bc975f48ec84e6828e8d8318b71592e844a737d1de28a1fe10a0fa291af445",
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "colorRange": "tv",
+    "width": 1920,
+    "height": 1080,
+    "framesPerSecond": "30/1",
+    "duration": 98.033333,
+    "audioStreams": 0,
+    "fullyDecodedWithoutErrors": true,
+    "containerAtoms": [
+      "ftyp",
+      "moov",
+      "free",
+      "mdat"
+    ],
+    "progressivePlaybackMetadataFirst": true
+  },
+  "thumbnail": {
+    "file": "docs/media/video/video-thumbnail.png",
+    "bytes": 2885925,
+    "sha256": "1dc3615bf8c1d9cdfd6f08bfba823c4d2087db6b95e2bb29e0534a7bcf8c3a33",
+    "sourceScene": 4,
+    "sourceEvent": {
+      "time": 34.419,
+      "detail": "Fotografia principal real carregada: File:Planalto Central (cropped).jpg."
+    },
+    "frameAtSeconds": 35.419,
+    "width": 1920,
+    "height": 1080,
+    "originalPhotographAndAttributionPreserved": true,
+    "captionBandOnly": true
+  },
+  "subtitles": {
+    "file": "docs/media/video/subtitles-pt-br.srt",
+    "bytes": 1152,
+    "sha256": "b38815ead3b2aa9c6848c9c92003e7d0227aef148c13161a14b0b7f0fedd3267",
+    "language": "pt-BR",
+    "encoding": "UTF-8",
+    "synchronizedTo": "Observed continuous browser scene timeline",
+    "cues": [
+      {
+        "id": 1,
+        "start": 0.001,
+        "end": 9.007,
+        "text": "World Explorer permite descobrir lugares do planeta por\nmeio de mapas, fotografias e informações geográficas."
+      },
+      {
+        "id": 2,
+        "start": 9.008,
+        "end": 21.013,
+        "text": "A pesquisa encontra destinos nas fontes públicas, sem depender de uma lista de lugares cadastrados."
+      },
+      {
+        "id": 3,
+        "start": 21.015,
+        "end": 33.016,
+        "text": "O mapa OpenStreetMap mostra a localização selecionada. Navegue pela cartografia e aproxime os detalhes."
+      },
+      {
+        "id": 4,
+        "start": 33.016,
+        "end": 44.017,
+        "text": "Depois da seleção, fotografias e informações disponíveis\nrevelam o destino em uma experiência cinematográfica."
+      },
+      {
+        "id": 5,
+        "start": 44.018,
+        "end": 57.021,
+        "text": "Wikipedia e Wikidata oferecem informações históricas e geográficas.\nOs dados apresentados possuem links para suas fontes."
+      },
+      {
+        "id": 6,
+        "start": 57.021,
+        "end": 72.022,
+        "text": "Navegue pelas fotografias e descubra lugares próximos.\nAs imagens disponíveis dependem das fontes de cada destino."
+      },
+      {
+        "id": 7,
+        "start": 72.023,
+        "end": 88.03,
+        "text": "Salve um destino nos favoritos e consulte as explorações recentes.\nAo reabrir, o conteúdo é consultado novamente."
+      },
+      {
+        "id": 8,
+        "start": 88.031,
+        "end": 98.033,
+        "text": "WORLD EXPLORER — Explore o mundo de uma nova maneira. github.com/Helio965/Globe-Express"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": 1,
+      "name": "Apresentação",
+      "start": 0.001,
+      "end": 9.007,
+      "text": "World Explorer permite descobrir lugares do planeta por meio de mapas, fotografias e informações geográficas.",
+      "events": [
+        {
+          "time": 3.096,
+          "detail": "Tela inicial real carregada; fontes e animações originais concluídas."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Pesquisa dinâmica",
+      "start": 9.008,
+      "end": 21.013,
+      "text": "A pesquisa encontra destinos nas fontes públicas, sem depender de uma lista de lugares cadastrados.",
+      "events": [
+        {
+          "time": 12.564,
+          "detail": "Pesquisa real digitada: Brasília."
+        },
+        {
+          "time": 18.15,
+          "detail": "Selecionado: Brasília; resposta real recebida."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Mapa interativo",
+      "start": 21.015,
+      "end": 33.016,
+      "text": "O mapa OpenStreetMap mostra a localização selecionada. Navegue pela cartografia e aproxime os detalhes.",
+      "events": [
+        {
+          "time": 22.343,
+          "detail": "Zoom realizado no mapa real; cartografia e atribuição visíveis."
+        },
+        {
+          "time": 23.951,
+          "detail": "Mapa deslocado com gesto real de arrastar."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Experiência cinematográfica",
+      "start": 33.016,
+      "end": 44.017,
+      "text": "Depois da seleção, fotografias e informações disponíveis revelam o destino em uma experiência cinematográfica.",
+      "events": [
+        {
+          "time": 34.419,
+          "detail": "Fotografia principal real carregada: File:Planalto Central (cropped).jpg."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Informações e fontes",
+      "start": 44.018,
+      "end": 57.021,
+      "text": "Wikipedia e Wikidata oferecem informações históricas e geográficas. Os dados apresentados possuem links para suas fontes.",
+      "events": [
+        {
+          "time": 44.215,
+          "detail": "Resumo e fatos documentados visíveis no diálogo real."
+        },
+        {
+          "time": 48.732,
+          "detail": "Rolagem pelas informações e links de consulta."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Galeria e lugares próximos",
+      "start": 57.021,
+      "end": 72.022,
+      "text": "Navegue pelas fotografias e descubra lugares próximos. As imagens disponíveis dependem das fontes de cada destino.",
+      "events": [
+        {
+          "time": 57.561,
+          "detail": "Galeria navegada: File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381482426).jpg."
+        },
+        {
+          "time": 62.16,
+          "detail": "Cartões reais de locais próximos e créditos exibidos."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Favoritos e histórico",
+      "start": 72.023,
+      "end": 88.03,
+      "text": "Salve um destino nos favoritos e consulte as explorações recentes. Ao reabrir, o conteúdo é consultado novamente.",
+      "events": [
+        {
+          "time": 72.383,
+          "detail": "Destino salvo; aba Favoritos apresenta a referência."
+        },
+        {
+          "time": 75.922,
+          "detail": "Histórico real exibido na aba Recentes."
+        },
+        {
+          "time": 82.73,
+          "detail": "Referência recente reaberta; nova consulta real concluída."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Encerramento",
+      "start": 88.031,
+      "end": 98.033,
+      "text": "WORLD EXPLORER — Explore o mundo de uma nova maneira. github.com/Helio965/Globe-Express",
+      "events": [
+        {
+          "time": 89.792,
+          "detail": "Retorno à tela inicial real. Texto final será adicionado somente na edição audiovisual."
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "completeRawCaptureWithoutIssues": true,
+    "realApiResponses": true,
+    "verifiedTls": true,
+    "durationBetween60And120Seconds": true,
+    "mp4Below25MB": true,
+    "ffprobe": true,
+    "completeFfmpegDecode": true,
+    "browserPlayback": {
+      "checkedAt": "2026-10-10T22:15:10.419Z",
+      "browser": "Chromium 154.0.8037.57",
+      "playback": true,
+      "metadata": {
+        "duration": 98.033333,
+        "width": 1920,
+        "height": 1080,
+        "readyState": 4,
+        "canPlayH264": "probably"
+      },
+      "seeks": [
+        9.803,
+        39.213,
+        58.82,
+        78.427,
+        95.092
+      ],
+      "mediaError": null
+    }
+  }
+}

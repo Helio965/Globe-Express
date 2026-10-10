@@ -1,0 +1,36 @@
+1
+00:00:00,001 --> 00:00:09,007
+World Explorer permite descobrir lugares do planeta por
+meio de mapas, fotografias e informações geográficas.
+
+2
+00:00:09,008 --> 00:00:21,013
+A pesquisa encontra destinos nas fontes públicas, sem depender de uma lista de lugares cadastrados.
+
+3
+00:00:21,015 --> 00:00:33,016
+O mapa OpenStreetMap mostra a localização selecionada. Navegue pela cartografia e aproxime os detalhes.
+
+4
+00:00:33,016 --> 00:00:44,017
+Depois da seleção, fotografias e informações disponíveis
+revelam o destino em uma experiência cinematográfica.
+
+5
+00:00:44,018 --> 00:00:57,021
+Wikipedia e Wikidata oferecem informações históricas e geográficas.
+Os dados apresentados possuem links para suas fontes.
+
+6
+00:00:57,021 --> 00:01:12,022
+Navegue pelas fotografias e descubra lugares próximos.
+As imagens disponíveis dependem das fontes de cada destino.
+
+7
+00:01:12,023 --> 00:01:28,030
+Salve um destino nos favoritos e consulte as explorações recentes.
+Ao reabrir, o conteúdo é consultado novamente.
+
+8
+00:01:28,031 --> 00:01:38,033
+WORLD EXPLORER — Explore o mundo de uma nova maneira. github.com/Helio965/Globe-Express
