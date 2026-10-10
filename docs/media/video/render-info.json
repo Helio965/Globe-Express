@@ -1,0 +1,106 @@
+{
+  "title": "WORLD EXPLORER — Explore o mundo de uma nova maneira",
+  "generatedAt": "2026-10-10T22:30:31.746Z",
+  "durationSeconds": 93.967,
+  "bytes": 4560155,
+  "sizeMiB": 4.35,
+  "width": 1920,
+  "height": 1080,
+  "framesPerSecond": 30,
+  "videoCodec": "H.264",
+  "pixelFormat": "yuv420p",
+  "narration": false,
+  "music": false,
+  "audioTrack": false,
+  "explanationLanguage": "pt-BR",
+  "subtitles": {
+    "visible": true,
+    "embedded": "mov_text",
+    "external": "subtitles-pt-br.srt"
+  },
+  "composition": "Gravação real preservada integralmente, ajustada proporcionalmente em 1920 × 960; faixa editorial externa de 120 px para explicações.",
+  "transitions": "Fades discretos de 0,18 s entre cenas; sem aceleração das interações.",
+  "decodedEveryFrame": true,
+  "thumbnailFrameSeconds": 25.96666666666667,
+  "creditsUrl": "https://github.com/Helio965/Globe-Express/blob/64d74af5fde1cbc52ebac1893a728c50a8a4a342/docs/media/MEDIA_CREDITS.md",
+  "scenes": [
+    {
+      "key": "home",
+      "title": "WORLD EXPLORER — EXPLORE O MUNDO",
+      "start": 0,
+      "end": 8,
+      "sourceStart": 2.15,
+      "sourceEnd": 10.15
+    },
+    {
+      "key": "search",
+      "title": "PESQUISA DINÂMICA",
+      "start": 8,
+      "end": 19.96666666666667,
+      "sourceStart": 10.15,
+      "sourceEnd": 22.116666666666667
+    },
+    {
+      "key": "cinematic",
+      "title": "APRESENTAÇÃO CINEMATOGRÁFICA",
+      "start": 19.96666666666667,
+      "end": 33.96666666666667,
+      "sourceStart": 36.67,
+      "sourceEnd": 50.67
+    },
+    {
+      "key": "gallery",
+      "title": "GALERIA DE FOTOGRAFIAS REAIS",
+      "start": 33.96666666666667,
+      "end": 45.96666666666667,
+      "sourceStart": 50.67,
+      "sourceEnd": 62.67
+    },
+    {
+      "key": "details",
+      "title": "HISTÓRIA, GEOGRAFIA E FONTES",
+      "start": 45.96666666666667,
+      "end": 57.96666666666667,
+      "sourceStart": 62.67,
+      "sourceEnd": 74.67
+    },
+    {
+      "key": "nearby",
+      "title": "LUGARES PRÓXIMOS",
+      "start": 57.96666666666667,
+      "end": 65.96666666666667,
+      "sourceStart": 76.78,
+      "sourceEnd": 84.78
+    },
+    {
+      "key": "favorites",
+      "title": "SEUS LUGARES FAVORITOS",
+      "start": 65.96666666666667,
+      "end": 77.96666666666667,
+      "sourceStart": 85.69,
+      "sourceEnd": 97.69
+    },
+    {
+      "key": "history",
+      "title": "HISTÓRICO DE EXPLORAÇÃO",
+      "start": 77.96666666666667,
+      "end": 85.96666666666667,
+      "sourceStart": 97.69,
+      "sourceEnd": 105.69
+    },
+    {
+      "key": "closing",
+      "title": "WORLD EXPLORER — DISCOVER THE WORLD",
+      "start": 85.96666666666667,
+      "end": 93.96666666666667,
+      "sourceStart": 108.31,
+      "sourceEnd": 116.31
+    }
+  ],
+  "files": [
+    "world-explorer-demo.mp4",
+    "video-thumbnail.png",
+    "subtitles-pt-br.srt",
+    "render-info.json"
+  ]
+}
