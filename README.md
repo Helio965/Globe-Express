@@ -4,7 +4,33 @@ Explore lugares do mundo por pesquisa ou pelo mapa e transforme a seleção em u
 
 A interface combina mapa interativo, títulos editoriais, galeria com créditos, cartões de locais próximos e transições GSAP. Conteúdo ausente é informado; uma fotografia de outro destino nunca deve substituir silenciosamente uma imagem indisponível.
 
+![Tela inicial real do World Explorer, com pesquisa de lugares e ilustração do globo](docs/media/screenshots/01-home.png)
+
 Ao clicar em um ponto de interesse do mapa Google, seu identificador é usado para consultar os detalhes e fotografias desse lugar. Cliques fora desses pontos conservam as coordenadas exatas. Quando a geocodificação identifica uma localidade, o enriquecimento enciclopédico exige correspondência de nome e um artigo a até 1,5 km; pontos sem identidade confirmada não recebem imagens de um artigo vizinho.
+
+## 🎬 Demonstração do Sistema
+
+Conheça o fluxo real de exploração de Lisboa: pesquisa com sugestões, apresentação cinematográfica, troca de fotografias, informações detalhadas, lugares próximos, favoritos e histórico. A gravação utiliza dados da Wikipedia, Wikidata e Wikimedia Commons, consultados pela aplicação em funcionamento.
+
+[![Assistir à demonstração real do World Explorer](docs/media/video/video-thumbnail.png)](docs/media/video/world-explorer-demo.mp4)
+
+**94 segundos em Full HD, 30 fps; MP4 de 4,35 MiB, com explicações em português brasileiro.** Não foi gerado áudio narrado: as explicações aparecem em uma faixa externa à interface, acompanhadas de uma trilha de legendas e do [arquivo SRT](docs/media/video/subtitles-pt-br.srt). O vídeo não contém música. [Abrir o MP4](docs/media/video/world-explorer-demo.mp4) · [Baixar o vídeo](https://raw.githubusercontent.com/Helio965/Globe-Express/e62767dfea4f5fc65a46ea85b5b3f0421625a1a1/docs/media/video/world-explorer-demo.mp4).
+
+As capturas e a edição são distribuídas sob CC BY-SA 4.0; textos e fotografias conservam seus créditos e licenças de origem. Consulte [autores, fontes e adaptações](docs/media/MEDIA_CREDITS.md). Os [detalhes técnicos da gravação](docs/media/video/render-info.json) e as [instruções para reproduzir as mídias](docs/media/README.md) também estão disponíveis.
+
+**Disponibilidade demonstrada:** pesquisa enciclopédica e conteúdo Wikimedia. O mapa Google não foi gravado porque as chaves não estavam configuradas; não há captura de mapa simulado. A ilustração do globo na tela inicial faz parte da interface.
+
+## 📸 Imagens do Sistema
+
+Sete capturas autênticas do navegador, incluindo a tela inicial acima e a versão mobile abaixo. As fotografias pertencem ao destino consultado e seus créditos permanecem visíveis na interface.
+
+| Pesquisa com sugestões reais | Apresentação cinematográfica |
+| --- | --- |
+| [![Pesquisa por Lisboa com resultados reais da Wikipedia](docs/media/screenshots/02-search.png)](docs/media/screenshots/02-search.png) | [![Apresentação de Lisboa com fotografia de Deensel e atribuições](docs/media/screenshots/04-cinematic.png)](docs/media/screenshots/04-cinematic.png) |
+| **Informações e referências** | **Galeria de fotografias** |
+| [![Painel de detalhes de Lisboa, informações geográficas e fontes](docs/media/screenshots/05-details.png)](docs/media/screenshots/05-details.png) | [![Outra fotografia real de Lisboa selecionada pelos controles da galeria](docs/media/screenshots/06-gallery.png)](docs/media/screenshots/06-gallery.png) |
+| **Favoritos neste navegador** | **Versão mobile** |
+| [![Lista de lugares favoritos com Lisboa salva pela interface](docs/media/screenshots/07-favorites.png)](docs/media/screenshots/07-favorites.png) | <a href="docs/media/screenshots/08-mobile.png"><img src="docs/media/screenshots/08-mobile.png" alt="Apresentação de Lisboa em tela mobile de 393 pixels, preservando os créditos" width="220"></a> |
 
 ## Funcionalidades e disponibilidade
 
