@@ -32,8 +32,24 @@ export default function GlobeArt({ compact = false }: { compact?: boolean }) {
           <path fill="#7c9682" fillOpacity="0.24" stroke="#a9b99f" strokeOpacity="0.3" d="m203 198 23-20 46 3 35 18 19 31-24 23-8 31-25 12-14 35 18 17 12 26-16 19-29-9-27-34-34-20-18-43-23-31 10-30 27-8Zm96 204 31 15 25 9 19 33-13 45-21 21-11 49-20 32-13-21-4-36-20-29-12-45 10-41 29-32Zm90-201 23-16 27 10 8 24 24-9 33 17 21-13 44 22 39 3 39 37 18 45-21 31-47-10-23 17-27-5-20 28-14-18-24-28-35-20-24 7-22-10-25 1-15-35-26-9 2-36 21-25Zm4 108 33 11 24 18 27 34-5 38-25 21-15 43-22 14-19-27-12-43-20-24-4-33 18-28 20-24Zm132 156 23-19 43 14 17 27-17 15-31-2-12 12-30-19 7-28Z" />
           <g stroke="#dcc091" strokeOpacity="0.45" strokeDasharray="2 9"><path d="M180 250Q355 110 557 288M304 482Q395 315 505 291M433 382Q528 365 564 475" /></g>
         </g>
+        {/*
+          NASA Blue Marble 2002: a genuine satellite-based view of Earth.
+          Render above the existing vector globe so its silhouette remains
+          available if the external photograph fails to load.
+        */}
+        <image
+          data-earth-source="nasa-blue-marble"
+          href="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/climate/2023/12/ImageWall5_1920x1200-80.jpg"
+          x="90"
+          y="90"
+          width="580"
+          height="580"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#planet-clip)"
+        />
+        <circle cx="380" cy="380" r="276" stroke="#b6d3c5" strokeOpacity="0.46" strokeWidth="1.35" />
+        <circle cx="380" cy="380" r="279" stroke="#8aafa1" strokeOpacity="0.16" strokeWidth="2" />
         <g fill="#efc892">
-          <circle cx="256" cy="266" r="3" /><circle cx="429" cy="254" r="3" /><circle cx="449" cy="371" r="3" /><circle cx="315" cy="461" r="3" /><circle cx="542" cy="475" r="3" />
           <circle cx="675" cy="211" r="4" /><circle cx="85" cy="494" r="3" />
         </g>
         <g stroke="#c9bda5" strokeOpacity="0.45"><path d="M379 27v18m-9-9h18M379 715v18m-9-9h18M27 379h18m-9-9v18M715 379h18m-9-9v18" /></g>
