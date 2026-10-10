@@ -12,11 +12,11 @@ A interface está em português. O projeto utiliza Next.js 16.4, React 19.3, Typ
 
 Veja uma exploração real de Brasília: pesquisa dinâmica, seleção no mapa OpenStreetMap, apresentação cinematográfica, informações com fontes, troca de fotografias, locais próximos, favoritos e histórico.
 
-[![Assistir à demonstração do World Explorer](docs/media/video/video-thumbnail.png)](docs/media/video/world-explorer-demo.mp4)
+[![Assistir à demonstração do World Explorer](docs/media/video/video-thumbnail.png)](https://helio965.github.io/Globe-Express/)
 
 **1 min 38 s · 1920 × 1080 · H.264 · 30 FPS.** O vídeo é silencioso, com explicações e legendas incorporadas em português brasileiro. Não havia uma ferramenta de narração pt-BR adequada no ambiente de produção.
 
-[Vídeo MP4](docs/media/video/world-explorer-demo.mp4) · [Legendas SRT](docs/media/video/subtitles-pt-br.srt) · [Fontes, autores e licenças](docs/media/MEDIA_CREDITS.md) · [Como reproduzir as capturas](docs/media/README.md)
+[Assistir no navegador](https://helio965.github.io/Globe-Express/) · [Baixar o MP4](https://raw.githubusercontent.com/Helio965/Globe-Express/4a3ec1a89f6646889977294ac103ec8b21320578/docs/media/video/world-explorer-demo.mp4) · [Legendas SRT](docs/media/video/subtitles-pt-br.srt) · [Fontes, autores e licenças](docs/media/MEDIA_CREDITS.md) · [Como reproduzir as capturas](docs/media/README.md)
 
 ## 📸 Imagens do Sistema
 

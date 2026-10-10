@@ -6,11 +6,13 @@ Estas mídias foram produzidas em 10 de outubro de 2026 a partir do commit [`14c
 
 - [Oito screenshots PNG](screenshots/): sete vistas desktop e uma vista móvel.
 - [Demonstração MP4](video/world-explorer-demo.mp4): 98,033 segundos, 1920 × 1080, H.264, yuv420p, 30 FPS e 22.606.541 bytes.
+- [Player HTML](video/index.html): controles nativos, reprodução no navegador e links para downloads e créditos.
 - [Miniatura](video/video-thumbnail.png): frame real da apresentação cinematográfica, com textos editoriais.
 - [Legendas pt-BR](video/subtitles-pt-br.srt): oito cenas sincronizadas, também incorporadas ao vídeo.
 - [Créditos e licenças](MEDIA_CREDITS.md): autores, fotografias, textos, dados e cartografia.
 - [Manifesto das capturas](capture-manifest.json): commit, dimensões, imagens carregadas, fontes e resultados da rede.
 - [Manifesto de produção](video/production-manifest.json): edição, timeline, checksums SHA-256 e verificação do MP4.
+- [Verificação do player](video/player-validation.json): reprodução, avanço entre cinco cenas, downloads, créditos e layout móvel.
 
 As imagens 01–05 e 07 têm 1920 × 1080 pixels. A imagem 06 tem 1920 × 1084 para incluir toda a seção de locais próximos e seus créditos. A imagem móvel 08 tem 430 × 932, sem transbordamento horizontal. Todas foram abertas para conferência visual.
 
@@ -85,3 +87,11 @@ PLAYWRIGHT_BASE_URL=http://127.0.0.1:3001 npm run test:e2e
 ```
 
 Confira também os PNGs, a miniatura, as legendas e a reprodução do MP4 em um navegador ou player. Depois do push, verifique os arquivos na branch publicada e a renderização do README no GitHub. Os testes existentes utilizam respostas controladas em alguns fluxos; a documentação visual foi capturada separadamente com os serviços reais.
+
+## Publicação do player
+
+A miniatura do README abre o [player publicado no GitHub Pages](https://helio965.github.io/Globe-Express/). O link de download usa o commit imutável que contém o MP4 documentado. A aplicação não participa da reprodução: `video/index.html` é uma página estática com o MP4, a miniatura e os créditos ao lado.
+
+O GitHub Pages publica a raiz da branch `gh-pages`. Essa branch contém somente a documentação necessária ao player: `docs/media/video/`, os créditos em Markdown e HTML, `LICENSE`, `.nojekyll` e um `index.html` na raiz. O HTML da raiz é uma cópia de `video/index.html` com `<base href="./docs/media/video/">` no cabeçalho. Ao atualizar as mídias, preserve a estrutura de caminhos e confira os checksums do manifesto antes de publicar.
+
+`MEDIA_CREDITS.html` apresenta o mesmo conteúdo de `MEDIA_CREDITS.md`, convertido pelo renderizador Markdown do GitHub. Atualize ambas as versões quando os créditos mudarem. Para conferir localmente o player, sirva a raiz do repositório por HTTP com suporte a requisições `Range` e abra `docs/media/video/`; não é preciso iniciar o Next.js. O suporte a `Range` permite avançar no MP4 antes de baixar o arquivo inteiro. Verifique também reprodução, avanço entre cenas, downloads, créditos e ausência de transbordamento na tela móvel.
