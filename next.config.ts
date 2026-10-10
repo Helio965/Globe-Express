@@ -1,22 +1,20 @@
-import type { NextConfig } from "next";
-
+import type { NextConfig } from 'next';
 const config: NextConfig = {
-  agentRules: false,
-  allowedDevOrigins: ["127.0.0.1", "localhost"],
   poweredByHeader: false,
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "upload.wikimedia.org", port: "", pathname: "/wikipedia/commons/**" },
-      { protocol: "https", hostname: "thumb.wikimedia.org", port: "", pathname: "/wikipedia/commons/**" },
-    ],
+  allowedDevOrigins: ['127.0.0.1'],
+  async redirects() {
+    return [
+      { source: '/privacidade', destination: '/privacy', permanent: true },
+      { source: '/termos', destination: '/terms', permanent: true },
+    ];
   },
   async headers() {
-    return [{ source: "/:path*", headers: [
-      { key: "X-Content-Type-Options", value: "nosniff" },
-      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-      { key: "X-Frame-Options", value: "DENY" },
-      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(self)" }
+    return [{ source: '/:path*', headers: [
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self)' },
+      { key: 'X-Frame-Options', value: 'DENY' },
     ] }];
-  }
+  },
 };
 export default config;

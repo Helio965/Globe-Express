@@ -1,14 +1,11 @@
-import { checkRateLimit, errorResponse, jsonResponse } from "@/lib/server/api";
-import { coordinatesSchema, readJson } from "@/lib/server/validation";
-import { reverseLocation } from "@/services/destinations";
-
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
-export async function POST(request: Request): Promise<Response> {
+import { reverseRequestSchema } from '@/lib/validation';
+import { failure, guardRequest, success } from '@/lib/http';
+import { resolveDestination } from '@/services/destination';
+export const dynamic = 'force-dynamic';
+export async function GET(request: Request) {
   try {
-    checkRateLimit(request, "reverse", 45);
-    const coordinates = await readJson(request, coordinatesSchema);
-    return jsonResponse(await reverseLocation(coordinates, request.signal));
-  } catch (error) { return errorResponse(error); }
+    guardRequest(request, 'destination', 20);
+    const point = reverseRequestSchema.parse(Object.fromEntries(new URL(request.url).searchParams));
+    return success((await resolveDestination({ provider: 'coordinates', ...point }, undefined, request.signal)).location);
+  } catch (error) { return failure(error); }
 }

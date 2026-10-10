@@ -1,81 +1,102 @@
-import type { Page } from "@playwright/test";
-import type { Destination, Photo, Place, PlaceRef, SearchSuggestion } from "../src/types/explorer";
+import { expect, type Page, type Route } from '@playwright/test';
+import type { Destination, Photo, PlaceReference, SearchSuggestion } from '../src/types/explorer';
 
-// Synthetic fixtures are used only by browser tests. The application never imports this file.
-function image(label: string, color: string) {
-  return `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000"><rect width="1600" height="1000" fill="${color}"/><text x="100" y="500" fill="white" font-size="70">Fixture: ${label}</text></svg>`)}`;
-}
+// These fixtures and drawn images exist exclusively inside the test runner.
+// Runtime search, destinations, media and map providers never import this file.
+export const alphaReference: PlaceReference = { provider: 'wikipedia', id: '101', language: 'pt' };
+export const betaReference: PlaceReference = { provider: 'wikipedia', id: '202', language: 'pt' };
+export const googleReference: PlaceReference = { provider: 'google', id: 'ChIJtest_only_303' };
 
-function photo(index: number): Photo {
-  const url = image(`Brasília ${index}`, index === 1 ? "#355451" : "#766140");
+function testPhoto(index: number): Photo {
   return {
-    id: `fixture-photo-${index}`, url, thumbnailUrl: url, width: 1600, height: 1000,
-    alt: `Vista de teste ${index} de Brasília`, source: "Wikimedia Commons", author: "Autoria de teste",
-    license: "CC0 (fixture)", sourceUrl: `https://commons.wikimedia.org/wiki/File:Fixture_${index}.svg`,
+    id: `test-only-photo-${index}`,
+    url: `/__test_images__/photo-${index}.svg`, thumbnailUrl: `/__test_images__/photo-${index}.svg`,
+    width: 1800, height: 1100, alt: `Imagem desenhada de teste ${index}`,
+    author: `Autor de fixture ${index}`, license: 'CC BY-SA 4.0',
+    licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+    sourceUrl: `https://example.test/test-image/${index}`, provider: 'commons',
   };
 }
 
-const brasilia: Place = {
-  ref: { provider: "google", id: "test-brasilia-place-id" }, id: "test-brasilia-place-id",
-  name: "Brasília", address: "Brasília, Distrito Federal, Brasil", country: "Brasil", region: "Distrito Federal",
-  coordinates: { lat: -15.7939, lng: -47.8828 }, source: "Google Maps",
-};
-const tokyo: Place = {
-  ref: { provider: "wikipedia", id: "12345", language: "pt" }, id: "wikipedia:pt:12345",
-  name: "Tóquio", address: "Tóquio, Japão", country: "Japão", coordinates: { lat: 35.6762, lng: 139.6503 }, source: "Wikipedia",
-};
-const everest: Place = {
-  ref: { provider: "wikipedia", id: "67890", language: "pt" }, id: "wikipedia:pt:67890",
-  name: "Monte Everest", address: "Himalaia", coordinates: { lat: 27.9881, lng: 86.925 }, source: "Wikipedia",
-};
-
-function destination(place: Place): Destination {
+export function destinationFixture(reference: PlaceReference, name = 'Destino Alpha — fixture'): Destination {
+  const coordinates = reference.provider === 'coordinates' ? { lat: reference.lat, lng: reference.lng } : { lat: -15.793, lng: -47.883 };
   return {
-    place, summary: `Resumo de teste sobre ${place.name}.`, description: `Descrição enciclopédica de teste sobre ${place.name}.`,
-    photos: [], nearby: [], facts: [], warnings: [],
-    sources: [{ title: "Wikipédia", url: `https://pt.wikipedia.org/wiki/${encodeURIComponent(place.name)}` }],
+    location: { reference, name, coordinates, country: 'País de teste', region: 'Região de teste', kind: 'fixture', sourceUrl: 'https://example.test/geographic-source', attributions: ['Fonte de teste'] },
+    summary: 'Descrição usada apenas em testes automatizados. Não é conteúdo geográfico real.',
+    sections: [{ title: 'Seção documentada de teste', text: 'Conteúdo completo para validar o painel de informações.' }],
+    photos: [testPhoto(1), testPhoto(2), testPhoto(3)],
+    nearby: [{ location: { reference: betaReference, name: 'Destino Beta — fixture', coordinates: { lat: -15.78, lng: -47.88 }, kind: 'fixture', country: 'País de teste', attributions: [] }, photo: testPhoto(2), distanceKm: 1.8 }],
+    facts: [{ label: 'Fato de teste', value: '1.234 m', sourceUrl: 'https://example.test/fact' }],
+    sources: [{ name: 'Referência de teste', url: 'https://example.test/source' }], warnings: [],
   };
 }
+export const alpha = destinationFixture(alphaReference);
+export const beta = { ...destinationFixture(betaReference, 'Destino Beta — fixture'), nearby: [] };
+export const google = destinationFixture(googleReference, 'Conteúdo Google — fixture');
 
-export const destinations = {
-  brasilia: {
-    ...destination(brasilia), photos: [photo(1), photo(2)],
-    facts: [{ label: "País", value: "Brasil", sourceUrl: "https://www.wikidata.org/wiki/Q2844" }],
-    nearby: [{ place: tokyo }, { place: everest }],
-  },
-  tokyo: destination(tokyo),
-  everest: { ...destination(everest), summary: "", description: "", warnings: ["Informações limitadas nesta resposta de teste."] },
-} satisfies Record<string, Destination>;
-
-export function byRef(ref: PlaceRef): Destination | undefined {
-  return Object.values(destinations).find(item => JSON.stringify(item.place.ref) === JSON.stringify(ref));
+export function suggestions(query: string): SearchSuggestion[] {
+  if (query.toLowerCase().includes('beta')) return [{ reference: betaReference, title: beta.location.name, subtitle: 'Região B, País de teste' }];
+  if (query.toLowerCase().includes('google')) return [{ reference: googleReference, title: google.location.name, subtitle: 'Região Google, País de teste' }];
+  return [
+    { reference: alphaReference, title: alpha.location.name, subtitle: 'Região A, País de teste' },
+    { reference: betaReference, title: beta.location.name, subtitle: 'Região B, Outro país de teste' },
+  ];
 }
 
-export async function mockApi(page: Page) {
-  // Avoid a network dependency for the external attribution logo during fixture tests.
-  await page.route("https://maps.gstatic.com/**", route => route.fulfill({
-    contentType: "image/svg+xml", body: '<svg xmlns="http://www.w3.org/2000/svg" width="144" height="18"><text y="14">Google (test)</text></svg>',
-  }));
-  await page.route("**/api/**", async route => {
-    const path = new URL(route.request().url()).pathname;
-    const body = route.request().postDataJSON() as { query?: string; ref?: PlaceRef };
-    if (path === "/api/search") {
-      if (body.query === "FALHA") {
-        await route.fulfill({ status: 503, json: { error: "Serviço indisponível nesta consulta de teste.", code: "TEST_UNAVAILABLE" } });
-        return;
-      }
-      const query = (body.query ?? "").toLocaleLowerCase("pt-BR");
-      const suggestions: SearchSuggestion[] = Object.values(destinations)
-        .filter(item => item.place.name.toLocaleLowerCase("pt-BR").includes(query))
-        .map(item => ({ ref: item.place.ref, label: item.place.name, description: item.place.address }));
-      await route.fulfill({ json: { suggestions, provider: "wikipedia", warnings: [] } });
-      return;
-    }
-    const result = body.ref && byRef(body.ref);
-    if (result && (path === "/api/destination" || path === "/api/resolve")) {
-      await route.fulfill({ json: path === "/api/resolve" ? result.place : result });
-      return;
-    }
-    await route.fulfill({ status: 404, json: { error: "Fixture não encontrada.", code: "TEST_NOT_FOUND" } });
+export async function fulfillDestination(route: Route, value: Destination) {
+  await route.fulfill({
+    status: 200, contentType: 'application/x-ndjson',
+    body: `${JSON.stringify({ type: 'location', location: value.location })}\n${JSON.stringify({ type: 'destination', data: value })}\n`,
   });
+}
+
+export async function installTestApi(page: Page) {
+  const state = { destinations: [] as PlaceReference[], searches: [] as string[] };
+  await page.route('**/api/config', route => route.fulfill({ json: { data: { mapProvider: 'open', googleConfigured: false, googleBrowserKeyPresent: false, googleServerKeyPresent: false } } }));
+  await page.route('**/api/search?*', route => {
+    const query = new URL(route.request().url()).searchParams.get('q') || '';
+    state.searches.push(query);
+    return route.fulfill({ json: { data: suggestions(query) } });
+  });
+  await page.route('**/api/destination', route => {
+    const { reference } = route.request().postDataJSON() as { reference: PlaceReference };
+    state.destinations.push(reference);
+    const value = reference.provider === 'coordinates'
+      ? { ...destinationFixture(reference, 'Ponto de teste no oceano'), photos: [], nearby: [], summary: 'Somente coordenadas verificadas de teste; nenhuma atração identificada.', sections: [], facts: [], sources: [], warnings: [{ service: 'Wikipedia', message: 'Não há informações suficientes para este ponto de teste.' }] }
+      : reference.provider === 'google' ? google : reference.id === '202' ? beta : alpha;
+    return fulfillDestination(route, value);
+  });
+  await page.route('**/__test_images__/**', route => {
+    const color = route.request().url().includes('2.svg') ? '#275e69' : route.request().url().includes('3.svg') ? '#656451' : '#a36249';
+    return route.fulfill({ contentType: 'image/svg+xml', body: `<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1100" viewBox="0 0 1800 1100"><rect width="1800" height="1100" fill="${color}"/><path d="M0 950L450 300L700 800L1200 250L1800 950V1100H0Z" fill="#182c31"/><text x="60" y="80" fill="white" font-size="28">FIXTURE SOMENTE TESTE</text></svg>` });
+  });
+  await page.route('https://tile.openstreetmap.org/**', route => route.fulfill({ contentType: 'image/png', body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=', 'base64') }));
+  await page.route('https://maps.gstatic.com/**', route => route.abort());
+  return state;
+}
+
+export async function openReadyApp(page: Page) {
+  await page.goto('/');
+  await expect(page.getByRole('combobox', { name: 'Buscar lugares pelo mundo' })).toBeEnabled();
+}
+export async function selectWithKeyboard(page: Page, query = 'Alpha') {
+  const input = page.getByRole('combobox', { name: 'Buscar lugares pelo mundo' });
+  await input.fill(query);
+  await expect(page.getByRole('option').first()).toBeVisible();
+  await input.press('ArrowDown');
+  await expect(page.getByRole('option').first()).toHaveAttribute('aria-selected', 'true');
+  await input.press('Enter');
+}
+export async function openCinemaAlpha(page: Page) {
+  await selectWithKeyboard(page);
+  await expect(page.getByRole('heading', { level: 1, name: alpha.location.name })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Conheça este lugar' })).toBeVisible();
+}
+export async function expectNoHorizontalOverflow(page: Page) {
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+}
+export function deferred() {
+  let resolve!: () => void;
+  const promise = new Promise<void>(done => { resolve = done; });
+  return { promise, resolve };
 }

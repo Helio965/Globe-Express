@@ -1,14 +1,15 @@
-import { checkRateLimit, errorResponse, jsonResponse } from "@/lib/server/api";
-import { readJson, searchSchema } from "@/lib/server/validation";
-import { searchDestinations } from "@/services/destinations";
-
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
-export async function POST(request: Request): Promise<Response> {
+import { searchRequestSchema } from '@/lib/validation';
+import { failure, guardRequest, success } from '@/lib/http';
+import { getExplorerConfig } from '@/lib/config';
+import { googleSearch } from '@/services/google';
+import { openSearch } from '@/services/open-provider';
+export const dynamic = 'force-dynamic';
+export async function GET(request: Request) {
   try {
-    checkRateLimit(request, "search", 60);
-    const { query, sessionToken } = await readJson(request, searchSchema);
-    return jsonResponse(await searchDestinations(query, sessionToken, request.signal));
-  } catch (error) { return errorResponse(error); }
+    guardRequest(request, 'search', 40);
+    const input = searchRequestSchema.parse(Object.fromEntries(new URL(request.url).searchParams));
+    return success(getExplorerConfig().googleConfigured
+      ? await googleSearch(input.q, input.sessionToken, request.signal)
+      : await openSearch(input.q, request.signal));
+  } catch (error) { return failure(error); }
 }

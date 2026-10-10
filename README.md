@@ -1,41 +1,29 @@
 # World Explorer
 
-Explore lugares do mundo por pesquisa ou pelo mapa e transforme a seleção em uma apresentação com fotografias reais, informações enciclopédicas e atrações próximas. O **World Explorer**, mantido neste repositório Globe-Express, consulta os provedores a cada exploração: não contém um catálogo fixo de destinos nem depende de geração de texto por inteligência artificial.
+Uma aplicação de exploração geográfica que conecta pesquisa, mapa interativo e uma apresentação cinematográfica do lugar escolhido. O destino é identificado pelos serviços integrados; textos, fotografias e sugestões próximas são consultados dinamicamente. Não existe um catálogo obrigatório de destinos nem fotografias aleatórias para preencher resultados ausentes.
 
-A interface combina mapa interativo, títulos editoriais, galeria com créditos, cartões de locais próximos e transições GSAP. Conteúdo ausente é informado; uma fotografia de outro destino nunca deve substituir silenciosamente uma imagem indisponível.
+A interface está em português. O projeto utiliza Next.js 16.4, React 19.3, TypeScript em modo estrito, Tailwind CSS 4.3, GSAP, Google Maps JavaScript API, Leaflet, Zod, Vitest e Playwright.
 
-Ao clicar em um ponto de interesse do mapa Google, seu identificador é usado para consultar os detalhes e fotografias desse lugar. Cliques fora desses pontos conservam as coordenadas exatas. Quando a geocodificação identifica uma localidade, o enriquecimento enciclopédico exige correspondência de nome e um artigo a até 1,5 km; pontos sem identidade confirmada não recebem imagens de um artigo vizinho.
+## Como funciona
 
-## Funcionalidades e disponibilidade
+1. Pesquise um lugar ou selecione coordenadas no mapa.
+2. Confirme o local e abra a apresentação.
+3. Consulte o resumo, as informações documentadas e suas fontes.
+4. Navegue pelas fotografias disponíveis, seus créditos e licenças.
+5. Explore resultados próximos ou retorne ao mapa mantendo a seleção.
+6. Salve uma referência nos favoritos ou volte a um destino recente. Os dados externos são consultados novamente ao reabrir o lugar.
 
-| Recurso | Origem / requisito |
-| --- | --- |
-| Pesquisa com sugestões de lugares | Google Places API (New), com chave de servidor |
-| Mapa, satélite, relevo, marcador e seleção por clique | Google Maps JavaScript API, com chave de navegador |
-| Identificação de coordenadas e endereços | Google Geocoding API, com chave de servidor |
-| Pesquisa sem chaves Google | Wikipedia, com cobertura menor: somente artigos com coordenadas |
-| Descrições, links de referência e informações estruturadas | Wikipedia e Wikidata, quando disponíveis |
-| Fotografias reais e créditos | Wikimedia Commons e Google Place Photos, conforme disponibilidade e configuração |
-| Galeria, detalhes, próximos lugares e navegação entre destinos | Conteúdo recuperado dos provedores, sem recarregar a página |
-| Favoritos e histórico | Referências locais no navegador, sem conta de usuário |
+Sem Google configurado, o projeto usa Leaflet com cartografia OpenStreetMap e pesquisa em artigos geográficos da Wikipedia. Esse modo não oferece a mesma cobertura mundial de endereços, estabelecimentos e pontos de interesse do Google Places. Uma consulta pode não ter artigo com coordenadas; uma região remota ou oceânica pode ter apenas as coordenadas escolhidas.
 
-**Sem as chaves Google, a busca enciclopédica continua disponível quando a rede permite acessar a Wikimedia.** O mapa informa a configuração ausente; a aplicação não simula um mapa Google funcionando. A pesquisa da Wikipedia não substitui a cobertura do Places para endereços, estabelecimentos ou regiões pouco documentadas. Nenhuma API de IA é necessária.
+Com as duas chaves Google configuradas, a aplicação utiliza Google Maps e Places API (New) para pesquisa, detalhes e lugares próximos, além de Geocoding para seleção por coordenadas. Wikipedia, Wikidata e Wikimedia Commons complementam as informações e fotografias quando houver correspondência confiável. As modalidades satélite e terreno dependem do Google Maps.
 
-## Tecnologias
+Um clique identificado pela geocodificação Google só recebe conteúdo enciclopédico quando o nome corresponde ao artigo e este fica dentro de 1 km. As coordenadas escolhidas continuam intactas. Pontos sem identidade confirmada não recebem o conteúdo de um artigo vizinho.
 
-- Next.js 16 com App Router, React 19 e TypeScript em modo estrito.
-- Tailwind CSS 4, CSS responsivo, fonte Oswald hospedada localmente, Lucide e GSAP para animações com suporte a movimento reduzido.
-- Next Image com loader próprio e Sharp para dimensionar fotografias licenciadas da Wikimedia; fotos Google preservam o fluxo sem cache.
-- Zod para validação de entradas e respostas externas.
-- Google Maps JavaScript API, Places API (New), Place Photos e Geocoding API.
-- APIs MediaWiki da Wikipedia e Wikimedia Commons; Wikidata.
-- Vitest para testes de lógica e serviços; Playwright para navegação e interface.
+Não há integração obrigatória com inteligência artificial. Os textos apresentados são obtidos das fontes consultadas; ausência de documentação ou imagem é indicada na interface.
 
-As versões efetivamente instaladas estão fixadas em `package-lock.json`. O código-fonte usa a licença MIT; textos, mapas e imagens de terceiros conservam as próprias condições de uso.
+## Executar localmente
 
-## Execução local
-
-Requisitos: **Node.js 22 ou superior**, npm e acesso HTTPS aos provedores utilizados. O faturamento Google é necessário para os recursos correspondentes.
+Requisitos: Node.js 22 ou superior, npm e acesso à internet para os provedores externos. O ambiente de implementação utiliza Node.js 24. Utilize o checkout existente da tarefa; não é necessário criar outro worktree.
 
 ```bash
 npm ci
@@ -43,134 +31,156 @@ cp .env.example .env.local
 npm run dev
 ```
 
-O servidor de desenvolvimento escuta a porta 3000. Preencha as chaves em `.env.local` para habilitar os serviços Google ou deixe-as vazias para usar a pesquisa enciclopédica. `npm install` também instala as dependências, mas `npm ci` reproduz o lockfile sem modificá-lo. Não versione `.env.local`.
+Abra [http://localhost:3000](http://localhost:3000). O modo aberto pode ser iniciado com as variáveis Google vazias. `npm ci` preserva o lockfile; `npm install` também instala as dependências, mas deve ser usado conscientemente quando se pretende atualizar a resolução de pacotes.
 
 Para produção:
 
 ```bash
 npm run build
-npm run start
+npm start
 ```
 
-A aplicação precisa de um runtime Node.js para as rotas de API. Um host somente de arquivos estáticos não executa as integrações de servidor. Configure as variáveis no serviço de hospedagem e reinicie o processo após alterá-las. A chave pública é entregue ao mapa pela configuração da página no servidor; esse fluxo aceita configuração em runtime, sem depender de um valor já embutido no build.
+As variáveis `NEXT_PUBLIC_*` são incorporadas ao código do navegador durante o build. Refaça o build após alterá-las em uma implantação. Não publique `.env.local`, chaves privadas ou arquivos de credenciais.
+
+O desenvolvimento permite também a origem `127.0.0.1` em `allowedDevOrigins`, necessária ao navegador de testes neste ambiente com Next.js 16.4. Se a hospedagem de desenvolvimento utilizar outro domínio, acrescente essa origem específica à configuração e reinicie o servidor.
 
 ## Variáveis de ambiente
 
-| Variável | Uso | Exposição |
-| --- | --- | --- |
-| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Carregar o mapa Google no navegador | Pública por natureza; restringir por referenciador HTTP e API |
-| `GOOGLE_MAPS_SERVER_API_KEY` | Places, Place Photos e Geocoding nas rotas de servidor | Segredo; nunca usar em componentes de cliente ou enviar ao navegador |
-
-Use **duas chaves separadas**. Nenhum valor real está no arquivo `.env.example`. Não crie `AI_API_KEY`: o projeto não usa um serviço de IA.
-
-Em um ambiente com injeção de segredos por proxy HTTPS, o valor presente no processo pode ser um marcador substituído apenas nas requisições aos hosts autorizados. A chave de servidor deve ter destinos `places.googleapis.com` e `maps.googleapis.com` autorizados e trafegar pelo proxy fornecido. A chave do navegador precisa ser a chave pública real: um marcador de segredo do proxy do servidor não funciona no navegador. Não copie marcadores ou segredos para arquivos públicos e não desative a verificação TLS para solucionar conectividade.
-
-Se a rede da hospedagem depende de `HTTPS_PROXY`/`HTTP_PROXY`, habilite o suporte nativo do Node ao proxy nas chamadas `fetch`. Em **Node 22.21+ ou 24.5+**, execute `NODE_USE_ENV_PROXY=1 npm run dev` ou `NODE_USE_ENV_PROXY=1 npm run start`, preservando as configurações de proxy fornecidas pelo ambiente. Em redes sem proxy, essa opção não é necessária. Consulte a [documentação do Node](https://nodejs.org/api/cli.html#node_use_env_proxy1) para a versão utilizada.
-
-## Configuração no Google Cloud
-
-1. No [Google Cloud Console](https://console.cloud.google.com/), crie ou selecione um projeto. Vincule uma conta de faturamento conforme os requisitos da Google Maps Platform.
-2. Em **APIs e serviços → Biblioteca**, habilite **Maps JavaScript API**, **Places API (New)** e **Geocoding API**. Place Photos faz parte do serviço Places; a aplicação usa os endpoints novos.
-3. Em **APIs e serviços → Credenciais**, crie uma chave para o navegador. Em restrições do aplicativo, escolha **Sites / referenciadores HTTP** e adicione somente as origens necessárias: seu domínio de produção e, para desenvolvimento, o endereço/porta usados localmente. Exemplo de desenvolvimento: `http://localhost:3000/*`. Não libere todos os sites.
-4. Na mesma chave, restrinja as APIs à **Maps JavaScript API**. Coloque-a em `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`.
-5. Crie outra chave para o servidor. Restrinja as APIs a **Places API (New)** e **Geocoding API**. Quando a hospedagem possui IP de saída estável, aplique a restrição de **endereços IP** correspondente. Não use restrição por referenciador HTTP nesta chave. Para saída dinâmica, use a solução de saída fixa/controle de acesso suportada pela hospedagem e siga as recomendações oficiais; não reutilize a chave do navegador.
-6. Guarde essa chave em `GOOGLE_MAPS_SERVER_API_KEY` no gerenciador de segredos ou ambiente do servidor. Não a envie por chat, commit ou URL de uma página pública.
-7. Em quotas e métricas das APIs, defina limites de requisições compatíveis com o orçamento. Configure [orçamentos e alertas](https://cloud.google.com/billing/docs/how-to/budgets). Um alerta de orçamento avisa sobre gastos; ele não é, por si só, um teto que interrompe as cobranças.
-8. Reinicie a aplicação. Pesquise um local, selecione uma sugestão, confirme marcador e coordenadas, entre na apresentação e verifique imagens, atribuições e próximos lugares. Teste também o clique em uma região remota e a navegação entre destinos. O painel de APIs do Google deve registrar as chamadas correspondentes.
-
-Se o mapa mostrar erro de autorização, confira API habilitada, faturamento, restrição de referenciador e a chave pública. Se a pesquisa Google falhar, confira a chave **de servidor**, a ativação do Places (New), a restrição de API/IP e as quotas. Uma falha de rede/proxy não comprova que a chave está incorreta. Mantenha erros e logs livres de credenciais.
-
-Documentação oficial: [primeiros passos](https://developers.google.com/maps/get-started), [segurança de chaves](https://developers.google.com/maps/api-security-best-practices), [sessões do Autocomplete](https://developers.google.com/maps/documentation/places/web-service/session-pricing) e [preços](https://developers.google.com/maps/billing-and-pricing/pricing).
-
-## Rede e hospedagem
-
-As integrações usam HTTPS. Em ambientes com lista de permissão, preserve os destinos já necessários e acrescente os que correspondem aos recursos utilizados:
-
-| Destinos | Finalidade |
+| Variável | Utilização |
 | --- | --- |
-| `maps.googleapis.com`, `maps.gstatic.com` | JavaScript, recursos do mapa e Geocoding |
-| `places.googleapis.com` | Autocomplete, detalhes, busca de próximos lugares e fotos |
-| `*.googleusercontent.com` | Entrega de imagens do Google autorizadas pelo endpoint de fotos |
-| `pt.wikipedia.org`, `en.wikipedia.org` | Pesquisa, coordenadas e descrições em português/inglês |
-| `www.wikidata.org` | Informações estruturadas |
-| `commons.wikimedia.org`, `upload.wikimedia.org`, `thumb.wikimedia.org` | Metadados, atribuições, arquivos de imagem e miniaturas |
-| `registry.npmjs.org` | Instalação das dependências |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Chave pública restrita por referenciadores HTTP, usada somente no mapa do navegador. |
+| `GOOGLE_MAPS_SERVER_API_KEY` | Chave privada de servidor para Places API (New) e Geocoding API. Nunca use o prefixo `NEXT_PUBLIC_` nesta chave. |
 
-Os recursos do mapa podem requisitar outros domínios Google conforme a configuração e região. Consulte a [documentação de Content Security Policy](https://developers.google.com/maps/documentation/javascript/content-security-policy) para manter a política de rede e a CSP adequadas. As páginas oficiais de referência requerem ainda acesso a `developers.google.com`, `cloud.google.com` e `foundation.wikimedia.org`.
+O modo Google exige ambas as chaves. Configurar somente uma delas não habilita uma integração parcial. Não são exigidas credenciais para Wikipedia, Wikidata, Wikimedia Commons ou o mapa aberto.
 
-As rotas têm limites de requisição por processo/IP: 60/minuto na pesquisa e na resolução de um lugar, 30/minuto para destinos completos, 45/minuto na geocodificação reversa e 120/minuto em cada serviço de fotos. O mapa e os serviços externos possuem suas próprias quotas. Em produção com mais de uma instância, aplique limites compartilhados e proteção de abuso no gateway; o limitador em memória não é um controle global de custos. O proxy de entrada deve sobrescrever `x-forwarded-for` de forma confiável, sem aceitar um IP arbitrário enviado pelo cliente.
+## Configurar Google Cloud
 
-`/api/media` aceita apenas arquivos HTTPS rasterizados de `upload.wikimedia.org` e `thumb.wikimedia.org` em `/wikipedia/commons/`, valida redirecionamentos, limita downloads a 12 MiB e processamento a 80 milhões de pixels. A interface utiliza as miniaturas de até 1600 pixels fornecidas pelo Commons, quando disponíveis, inclusive no fundo da apresentação. O servidor processa no máximo duas imagens ao mesmo tempo, com fila de 12 e prazo de 15 segundos incluindo espera; o Sharp também recebe um limite de processamento. Converte as fotos em WebP com largura adequada à tela e cache HTTP de uma hora, permitido para esse conteúdo licenciado. O endpoint não aceita fotos Google nem URLs arbitrárias. Autoria, licença e fonte continuam junto à galeria. `npm run dev` usa o compilador webpack suportado pelo Next.js, evitando o ciclo de HMR observado com Turbopack nesta máquina; o build de produção usa o compilador padrão.
+1. Crie ou selecione um projeto no [Google Cloud Console](https://console.cloud.google.com/).
+2. Associe uma conta de faturamento ao projeto conforme as exigências da Google Maps Platform. Consulte a [tabela de preços vigente](https://developers.google.com/maps/billing-and-pricing/pricing); não presuma que uma franquia gratuita cubra todo o uso.
+3. Em **APIs e serviços → Biblioteca**, habilite **Maps JavaScript API**, **Places API (New)** e **Geocoding API**. A API Places antiga não substitui Places API (New).
+4. Crie **duas chaves distintas** em **APIs e serviços → Credenciais**.
+5. Na chave do navegador, escolha a restrição de aplicação **Sites / referenciadores HTTP**. Autorize apenas os endereços necessários, por exemplo `http://localhost:3000/*` para desenvolvimento e `https://seu-dominio.example/*` para produção. Restrinja a API a **Maps JavaScript API**. O navegador inevitavelmente recebe essa chave; suas restrições são essenciais.
+6. Na chave do servidor, restrinja as APIs a **Places API (New)** e **Geocoding API**. Quando a hospedagem disponibilizar saída com IP fixo, restrinja a aplicação a esse IP. Em plataformas sem saída fixa, configure um proxy de saída autorizado ou outra solução suportada pelo provedor antes de aplicar uma restrição por IP. Uma restrição por referenciador HTTP não protege requisições de servidor da mesma forma.
+7. Insira as chaves respectivas em `.env.local` ou nas variáveis protegidas da hospedagem. Reinicie o desenvolvimento ou gere um novo build.
+8. Configure quotas por API e alertas de orçamento. Alertas notificam consumo; não garantem interrupção automática das cobranças. Revise também quotas de consultas e o monitoramento de erros.
+9. Abra o mapa, confirme que o provedor Google foi ativado, pesquise um destino, selecione uma sugestão e confira o marcador e a apresentação. Teste também um clique no mapa. Erros de chave, APIs desativadas, faturamento e quota precisam ser resolvidos no projeto Cloud correspondente.
 
-## Testes e verificação
+Autocomplete utiliza um token de sessão UUID para associar as sugestões à seleção e aos detalhes do lugar. Tokens não devem ser reutilizados entre sessões concluídas. A aplicação solicita campos específicos e evita persistir conteúdo Google. Não transforme respostas ou URLs temporárias de fotografias em um catálogo permanente.
+
+Pesquisa, consultas de detalhes, mapas, fotografias, geocodificação e buscas próximas podem gerar cobrança segundo as condições vigentes. Debounce, cancelamento de consultas antigas e campos limitados reduzem chamadas desnecessárias; não eliminam a responsabilidade pelo consumo.
+
+## Integrações e acesso à rede
+
+| Serviço | Conteúdo e finalidade |
+| --- | --- |
+| Google Maps JavaScript API | Mapa no navegador, seleção e estilos disponíveis. |
+| Google Places API (New) | Autocomplete, identidade e detalhes do lugar, fotografias e sugestões próximas. |
+| Google Geocoding API | Identificação geográfica a partir de coordenadas. |
+| Wikipedia | Pesquisa de artigos geográficos, texto enciclopédico e referências. |
+| Wikidata | Identificadores e fatos estruturados associados ao artigo. |
+| Wikimedia Commons | Imagens relacionadas ao destino e metadados de autoria e licença. |
+| OpenStreetMap | Cartografia do modo aberto, exibida com Leaflet. |
+
+O servidor precisa alcançar os domínios Wikimedia consultados (`pt.wikipedia.org`, `en.wikipedia.org`, `www.wikidata.org` e `commons.wikimedia.org`), além de `places.googleapis.com` e `maps.googleapis.com` no modo Google. O navegador precisa carregar as imagens de `upload.wikimedia.org` e `thumb.wikimedia.org`, os tiles de `tile.openstreetmap.org` no modo aberto e os recursos Google de `maps.googleapis.com`, `maps.gstatic.com` e `*.googleusercontent.com` no modo Google. Políticas de rede da hospedagem precisam permitir esses destinos.
+
+Tiles públicos OpenStreetMap têm uma [política de utilização](https://operations.osmfoundation.org/policies/tiles/) própria, sem garantia de disponibilidade para tráfego elevado. Para uma implantação de maior escala, escolha um provedor de tiles apropriado e preserve a atribuição exigida.
+
+## Organização do código
+
+- `src/app`: páginas Next.js, estilos globais e rotas de servidor.
+- `src/components`: interface, pesquisa, mapa, apresentação e navegação.
+- `src/services`: adaptadores das APIs externas e composição dos dados do destino.
+- `src/lib` e `src/hooks`: validação, comunicação, estado e persistência local.
+- `src/types/explorer.ts`: contratos compartilhados de localização, referência, fotografia, conteúdo e resposta da API.
+- Testes Vitest e Playwright: validação da lógica e dos fluxos de navegação.
+
+O navegador não recebe a chave Google de servidor. Dados de entrada e respostas externas são validados; conteúdo externo é tratado como texto. Favoritos e histórico armazenam referências, sem copiar fotografias, descrições, nomes, endereços ou respostas Google. Referências temporárias de fotografias Google também não são persistidas.
+
+O histórico da versão anterior (`world-explorer:history:v1`) é lido com a mesma validação quando a nova chave de recentes está ausente. Ao explorar novamente, as referências são transportadas para o novo armazenamento. Limpar o histórico impede que os registros antigos reapareçam. Os endereços `/privacidade` e `/termos` redirecionam para as páginas atuais.
+
+Fotografias Commons são descobertas a partir da imagem principal da entidade Wikidata (`P18`), da imagem principal do artigo e da categoria Commons vinculada à entidade. O sistema não incorpora indiscriminadamente todas as ilustrações de um artigo. Os arquivos passam por verificação de metadados, licença, autoria, resolução e formato; imagens identificadas como mapas, logotipos, bandeiras ou conteúdo sintético são descartadas. A vinculação da fonte reduz associações incorretas, mas não substitui uma revisão editorial de cada fotografia.
+
+Somente artigos Wikimedia consultados com sucesso possuem cache em memória, por 60 segundos e com limite de 64 entradas por processo. Conteúdo Google não é armazenado em cache. As respostas da API usam `Cache-Control: no-store`.
+
+### API interna
+
+| Rota | Operação |
+| --- | --- |
+| `GET /api/health` | Verifica se o servidor responde; não comprova disponibilidade dos provedores externos. |
+| `GET /api/config` | Informa o provedor ativo e a presença das chaves, sem expor a chave privada. |
+| `GET /api/search?q=...&sessionToken=...` | Pesquisa dinâmica; aceita de 2 a 160 caracteres. Token UUID opcional, utilizado no modo Google. |
+| `GET /api/reverse?lat=...&lng=...` | Resolve um ponto; latitude deve estar entre −90 e 90, longitude entre −180 e 180. |
+| `POST /api/destination` | Recebe JSON com `reference` e `sessionToken` opcional, resolve o lugar e compõe o conteúdo. |
+| `GET /api/photos?name=...&width=...` | Resolve uma referência válida de fotografia Google e redireciona para o recurso autorizado; largura de 1 a 4800 pixels. |
+
+Uma referência pode ser `{ "provider": "wikipedia", "id": "ID_DO_ARTIGO", "language": "pt" }`, `{ "provider": "google", "id": "PLACE_ID" }` ou `{ "provider": "coordinates", "lat": 0, "lng": -140 }`. IDs de artigos devem ser números positivos. Os exemplos são formatos de entrada, não resultados cadastrados.
+
+As respostas JSON usam `{ "data": ... }`; falhas usam `{ "error": { "code": "...", "message": "..." } }`. Ao solicitar `Accept: application/x-ndjson` em `/api/destination`, a resposta é um fluxo de eventos: `location` após a resolução geográfica, `destination` após a composição e `error` quando a operação falha. A interface acompanha essas etapas reais, sem porcentagens simuladas.
+
+Há proteção de origem e limites por IP e instância em janelas de 60 segundos: 40 consultas de pesquisa, 20 de destino/geocodificação e 120 de fotografias. Em produção, o proxy deve substituir os cabeçalhos encaminhados por valores confiáveis; para múltiplas instâncias, acrescente controle de tráfego na infraestrutura. Esses limites não substituem quotas Google nem autenticação de acesso quando necessária.
+
+## Verificar o projeto
 
 ```bash
 npm run lint
+npm run typecheck
 npm run test
 npm run build
-npm run typecheck
 ```
 
-Para os testes de navegador, instale o Chromium do Playwright e execute:
+Para os testes de navegador, instale Chromium quando necessário e execute:
 
 ```bash
 npx playwright install chromium
 npm run test:e2e
 ```
 
-Caso a máquina já forneça um Chromium compatível:
+A configuração usa `/usr/bin/chromium` quando ele existe; caso contrário, utiliza o navegador instalado pelo Playwright. `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` permite indicar outro executável. `PLAYWRIGHT_BASE_URL` permite testar um servidor já iniciado; sem essa variável, o Playwright inicia o servidor de desenvolvimento em `http://127.0.0.1:3000`.
+
+`npm run check` reúne lint, verificação TypeScript, testes unitários e build. Os testes automatizados podem usar respostas controladas para verificar estados de erro e fluxos de interface. Essas respostas existem somente nos testes e não substituem as integrações de produção.
+
+Para uma aceitação com dados reais, teste cidade, monumento, montanha, parque, praia, local inexistente e coordenada oceânica. Brasília, Pirâmides de Gizé, Monte Everest, Yosemite, Copacabana e Tóquio são possíveis entradas de teste, não destinos cadastrados. Verifique teclado, telas pequenas, orientação horizontal, movimento reduzido, troca rápida de destinos e retorno ao mapa.
+
+Os testes de serviços públicos ao vivo são opcionais, porque dependem da rede e das respostas atuais dos provedores. Execute-os explicitamente:
 
 ```bash
-CHROMIUM_PATH=/usr/bin/chromium npm run test:e2e
+WORLD_EXPLORER_LIVE_TESTS=1 npm test -- src/tests/open-live.test.ts
 ```
 
-O Playwright inicia o servidor de teste conforme `playwright.config.ts`, com as chaves Google vazias para verificar também esse estado. Fora de CI, ele pode reutilizar um servidor já iniciado na porta 3000; esse servidor deve estar em modo sem chaves para a suíte. Os testes automatizados interceptam respostas externas para testar carregamento, falhas e mudanças de destino de forma determinística; esses dados são exclusivos dos testes. A aplicação utiliza serviços reais. Testes com respostas interceptadas não validam uma credencial, uma quota ou a disponibilidade real do Google/Wikimedia.
+Para verificar a API de um servidor em execução com dados reais:
 
-Na validação com provedores reais, use localidades variadas como entradas de pesquisa: cidade, monumento, montanha, parque, praia, ponto oceânico e nome inexistente. Confira também ausência de fotos, respostas lentas, troca rápida de destino, teclado, movimento reduzido e telas estreitas. Os exemplos de teste não são um catálogo da aplicação.
-
-Os comandos acima são instruções reproduzíveis; não constituem uma declaração de que todos os provedores externos foram verificados. Consulte os resultados efetivos da execução/CI e configure as chaves para validar os recursos Google.
-
-Com o servidor iniciado, a validação real e opcional dos provedores pode ser executada com `npm run test:live`. Ela consulta cidades, monumento, montanha, parque e praia, além de um ponto oceânico, um nome inexistente e coordenadas inválidas. Para outra instalação, defina `WORLD_EXPLORER_URL`. Não usa respostas simuladas e depende da rede e disponibilidade das APIs; sem chaves Google valida a cobertura Wikimedia.
-
-## Organização do projeto
-
-```text
-src/
-├── app/                 páginas, layout e rotas de API
-├── components/          mapa, pesquisa e apresentação cinematográfica
-├── lib/                 estado de requisições, persistência local e utilitários de servidor
-├── services/            adaptadores Google e Wikimedia
-└── types/               contratos compartilhados
+```bash
+npm run test:live
 ```
 
-Os testes `*.test.ts` ficam junto dos módulos que verificam; a configuração de navegador fica em `playwright.config.ts`.
-As especificações e fixtures de navegador ficam em `e2e/`. Elas executam os fluxos em Chromium desktop e móvel, com movimento reduzido, e não simulam a disponibilidade de um mapa Google quando a chave está ausente.
+`WORLD_EXPLORER_URL` permite indicar outra instalação. O script verifica seis destinos variados, oceano, busca inexistente e coordenadas inválidas; suas entradas são somente casos de aceitação. O workflow GitHub Actions preservado executa as verificações determinísticas e o Playwright, sem exigir credenciais ou executar esse smoke externo automaticamente.
 
-As páginas `/privacidade` e `/termos` descrevem o uso de dados e conteúdo ao visitante. A configuração Google fica no servidor; somente a chave destinada ao navegador é exposta. As entradas são validadas, chamadas externas têm tratamento de erro e respostas obsoletas não devem substituir a seleção atual.
+### Validação registrada
 
-## Dados, atribuição e licenciamento
+Os testes ao vivo das fontes públicas passaram **8/8**: pesquisa e resolução de Brasília, Pirâmides de Gizé, Monte Everest, Yosemite National Park, Praia de Copacabana e Tóquio, enriquecimento de Brasília, além de ponto oceânico e pesquisa inexistente. Brasília retornou 11 informações estruturadas, 10 fotografias licenciadas e 4 resultados próximos nessa execução. A imagem principal e uma miniatura oficial de 500 pixels responderam HTTP 200 com conteúdo de imagem. Esses números refletem a consulta realizada e podem mudar conforme as fontes.
 
-- **Código:** licença [MIT](LICENSE), preservando o aviso de autoria existente.
-- **Google Maps/Places:** conteúdo sujeito aos [termos da Google Maps Platform](https://cloud.google.com/maps-platform/terms/) e às [políticas de Places](https://developers.google.com/maps/documentation/places/web-service/policies). Preserve o logotipo, os créditos e as atribuições exigidas. Os requisitos podem variar com o produto, a região e o contrato, inclusive para contas com endereço de faturamento no Espaço Econômico Europeu.
-- **Fotos do Google:** as atribuições retornadas pelo serviço acompanham as fotos. Consulte [Place Photos (New)](https://developers.google.com/maps/documentation/places/web-service/place-photos). URLs de fotos, nomes de recursos de foto e respostas Google não são um acervo para download ou cache permanente. A integração solicita conteúdo sem cache HTTP persistente; favoritos guardam apenas a referência do lugar.
-- **Wikipedia:** textos possuem condições de atribuição e compartilhamento descritas nos [Termos de Uso da Wikimedia](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use). A apresentação identifica a Wikipedia, a licença e o artigo original; consulte a página específica e o histórico de autoria para redistribuição.
-- **Wikidata:** dados estruturados são disponibilizados sob [CC0](https://www.wikidata.org/wiki/Wikidata:Licensing); os links dos itens permitem verificar sua origem.
-- **Wikimedia Commons:** cada arquivo tem autor, licença e condições próprios. A galeria exibe os metadados disponíveis e oferece o link de origem. Licenças CC BY/CC BY-SA e domínio público têm requisitos diferentes; abrir uma imagem no site não transfere direitos irrestritos ao visitante. Consulte a [orientação oficial para reutilização](https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia).
+A suíte determinística registrou **138 testes aprovados** e **8 testes ao vivo ignorados** na execução padrão; estes últimos foram executados separadamente pelo comando opt-in acima. O adaptador Google possui 14 testes unitários aprovados com respostas controladas. A documentação oficial Google consultada respondeu HTTP 200.
 
-Antes de publicar uma instalação, o operador deve revisar esses documentos vigentes, conferir as atribuições exibidas e adaptar termos, privacidade e identificação do responsável à hospedagem e à jurisdição aplicáveis. As páginas incluídas explicam o comportamento técnico; não representam certificação de conformidade nem substituem a revisão dos contratos dos provedores.
+O smoke da API também passou **9/9 verificações com dados reais**. Todos os seis destinos retornaram fotografias, autoria, licença e fontes. Oceano e busca inexistente preservaram seus resultados vazios; latitude inválida retornou HTTP 400.
 
-As políticas oficiais de Places e Place Photos foram consultadas na implementação; os links permitem conferir as condições aplicáveis à sua instalação. O logotipo incluído em `public/attribution` é o SVG oficial do Google Maps, preservado sem alterações; a marca não está coberta pela licença MIT do código. A fonte Oswald conserva sua licença SIL Open Font License no pacote correspondente.
+`npm run check` concluiu sem erros, incluindo lint, TypeScript estrito, testes e build de produção. Os **24 testes Playwright passaram** contra esse build, sem novas tentativas: exploração contínua, galeria, mapa persistente, teclado, favoritos, migração do histórico, recuperação de erros, concorrência de consultas e telas de 320, 390 e 844 pixels. O navegador também pesquisou Brasília nos serviços reais, abriu a apresentação e os detalhes, navegou pela galeria e retornou ao mapa. Tiles OpenStreetMap e imagens Wikimedia responderam HTTP 200 com verificação HTTPS ativa; não houve erros de JavaScript, falhas de requisição ou transbordamento horizontal na tela móvel. A auditoria das dependências de produção registrou zero vulnerabilidades.
 
-## Limitações conhecidas
+As chaves Google continuam ausentes neste ambiente. Portanto, mapa, pesquisa, geocodificação e fotografias Google **não foram validados ao vivo**. Configure as duas chaves e realize os passos de aceitação descritos acima. O acesso real a Wikimedia foi validado; o bloqueio inicial de rede foi resolvido. Implementar uma integração ou testar seu adaptador com respostas controladas não comprova a validação do provedor real.
 
-- Uma localidade pode existir no mapa e não ter artigo, fotografia licenciada ou atração próxima. A apresentação mantém os dados encontrados e informa as lacunas.
-- Coordenadas em oceano ou regiões remotas não se transformam automaticamente em uma cidade ou ponto turístico.
-- A correspondência entre uma entidade geográfica e um artigo depende de nome, coordenadas e metadados disponíveis; as fontes ficam acessíveis para conferência.
-- Alguns artigos têm somente texto em inglês. A ausência de conteúdo não é preenchida com fatos gerados por IA.
-- Imagens podem expirar, falhar, ser removidas ou ter licenças/atribuições atualizadas no provedor. A aplicação trata a falha sem trocar por fotografias aleatórias.
-- Favoritos e histórico são deste navegador, podem ser apagados pelo usuário e não sincronizam entre dispositivos. São guardados identificadores de lugares, idioma do artigo ou coordenadas selecionadas, nunca fotografias ou descrições Google. O histórico registra automaticamente as últimas 12 explorações concluídas; os favoritos dependem de ação do usuário.
-- O serviço depende de acesso aos provedores, faturamento, quotas e credenciais válidas. O mapa Google e suas consultas pagas exigem validação com as chaves reais da instalação.
+## Limitações e falhas esperadas
 
-## Custos
+- Um resultado geográfico não garante artigo, fotografias licenciadas ou atrações próximas.
+- Fontes diferentes podem divergir em nomes, idiomas, atualização e precisão. Confira os links de origem antes de usar informações importantes.
+- Pontos oceânicos e regiões pouco documentadas mantêm suas coordenadas e podem não gerar uma apresentação completa.
+- O modo aberto depende de artigos geográficos; não equivale à cobertura de endereços e negócios do Google Places.
+- Falha de um provedor deve ser informada sem criar fatos ou imagens para substituí-lo. Tente novamente após resolver rede, credenciais ou quota.
+- Favoritos são locais ao navegador. Limpar os dados do site ou trocar de navegador não preserva essa coleção.
+- Endpoints públicos precisam de controles de tráfego adequados à infraestrutura de produção, inclusive limites globais quando houver múltiplas instâncias.
 
-Carregamento do mapa, Autocomplete, detalhes de lugares, busca de próximos lugares, fotos e geocodificação podem gerar cobrança conforme os SKUs e planos vigentes do Google. Sessões e campos solicitados influenciam o consumo. A Wikimedia não exige chave para este fluxo, mas possui regras de uso e limites próprios. Configure quotas, monitore consumo e dimensione também os custos de hospedagem e tráfego de imagens.
+## Privacidade, atribuições e licença
+
+As páginas [Privacidade](/privacy) e [Termos de uso](/terms) explicam armazenamento local, comunicação com os provedores e atribuições. O projeto não implementa contas de usuário nem ferramentas próprias de publicidade ou análise de navegação.
+
+Fotografias permanecem sujeitas à licença de cada arquivo. Créditos, autoria, fonte e links de licença não devem ser removidos. Wikimedia Commons inclui arquivos com licenças diferentes: confira a página de origem, requisitos de atribuição e eventuais obrigações de compartilhar adaptações pela mesma licença. Textos Wikipedia seguem a licença indicada na fonte, normalmente CC BY-SA; dados estruturados Wikidata são disponibilizados sob CC0. Conteúdo Google segue seus [termos](https://cloud.google.com/maps-platform/terms) e [políticas](https://developers.google.com/maps/documentation/places/web-service/policies), incluindo regras de apresentação, atribuição e armazenamento. A cartografia OpenStreetMap exige atribuição e observa a [ODbL](https://www.openstreetmap.org/copyright).
+
+O código deste repositório é distribuído sob a [licença MIT](LICENSE). Essa licença não transfere direitos sobre fotografias, textos, mapas ou marcas dos provedores externos.

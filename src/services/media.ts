@@ -1,115 +1,88 @@
-import sharp from "sharp";
-import { z } from "zod";
-import { deadline, ServiceError } from "@/lib/server/http";
+import { z } from 'zod';
+import { ApiError } from '@/lib/errors';
+import { upstreamJson } from '@/lib/upstream';
+import type { Photo } from '@/types/explorer';
+import { plainText } from './wikipedia';
 
-const maxBytes = 12 * 1024 * 1024;
-const timeoutMs = 15_000;
-const maxActive = 2;
-const maxQueued = 12;
-let active = 0;
-type SlotWaiter = { signal: AbortSignal; resolve: (release: () => void) => void; reject: (reason: unknown) => void; onAbort: () => void };
-const queue: SlotWaiter[] = [];
+// CommonsMetadataExtension uses a numeric value alongside the textual license/author fields.
+const metadataSchema = z.record(z.string(), z.object({ value: z.union([z.string(), z.number(), z.boolean()]).transform(String) }));
+const infoSchema = z.object({ url: z.string(), thumburl: z.string().optional(), width: z.number().positive(), height: z.number().positive(), mime: z.string().optional(), descriptionurl: z.string().optional(), extmetadata: metadataSchema.optional() });
+const responseSchema = z.object({ query: z.object({ pages: z.array(z.object({ title: z.string(), imageinfo: z.array(infoSchema).optional(), categories: z.array(z.object({ title: z.string() })).optional() })) }).optional() });
+const thumbnailsSchema = z.object({ query: z.object({ pages: z.array(z.object({ title: z.string(), imageinfo: z.array(z.object({ url: z.string().optional(), thumburl: z.string().optional() })).optional() })) }).optional() });
+const categorySchema = z.object({ query: z.object({ categorymembers: z.array(z.object({ title: z.string(), ns: z.number() })) }) });
 
-function releaseSlot(): () => void {
-  let released = false;
-  return () => {
-    if (released) return;
-    released = true;
-    active -= 1;
-    while (active < maxActive && queue.length) {
-      const waiter = queue.shift()!;
-      waiter.signal.removeEventListener("abort", waiter.onAbort);
-      if (waiter.signal.aborted) { waiter.reject(waiter.signal.reason); continue; }
-      active += 1;
-      waiter.resolve(releaseSlot());
-    }
-  };
-}
-
-async function acquireSlot(signal: AbortSignal): Promise<() => void> {
-  signal.throwIfAborted();
-  if (active < maxActive) { active += 1; return releaseSlot(); }
-  if (queue.length >= maxQueued) throw new ServiceError("MEDIA_BUSY", "O serviço de fotografias está ocupado. Tente novamente em instantes.", 503);
-  return new Promise((resolve, reject) => {
-    const waiter: SlotWaiter = {
-      signal, resolve, reject,
-      onAbort: () => {
-        const index = queue.indexOf(waiter);
-        if (index >= 0) queue.splice(index, 1);
-        signal.removeEventListener("abort", waiter.onAbort);
-        reject(signal.reason);
-      },
-    };
-    queue.push(waiter);
-    signal.addEventListener("abort", waiter.onAbort, { once: true });
-  });
-}
-
-const hosts = new Set(["upload.wikimedia.org", "thumb.wikimedia.org"]);
-export const commonsImageSchema = z.string().max(4096).transform((value, context) => {
+function trustedMediaUrl(raw: string | undefined): string | undefined {
+  if (!raw) return undefined;
   try {
-    const url = new URL(value);
-    if (url.protocol === "https:" && hosts.has(url.hostname) && !url.username && !url.password && !url.port && !url.hash && url.pathname.startsWith("/wikipedia/commons/") && !/%(?:2f|5c)/i.test(url.pathname)) return url;
-  } catch { /* Invalid URLs are rejected without logging the supplied value. */ }
-  context.addIssue({ code: "custom", message: "URL de fotografia inválida." });
-  return z.NEVER;
-});
-export const mediaQuerySchema = z.object({ url: commonsImageSchema, width: z.coerce.number().int().min(64).max(3840) }).strict();
+    const url = new URL(raw);
+    if (url.protocol !== 'https:' || !['upload.wikimedia.org', 'thumb.wikimedia.org'].includes(url.hostname) || url.username || url.password) return undefined;
+    for (const key of [...url.searchParams.keys()]) if (key.startsWith('utm_')) url.searchParams.delete(key);
+    return url.toString();
+  } catch { return undefined; }
+}
+function safeLicenseUrl(raw: string | undefined): string | undefined {
+  if (!raw) return undefined;
+  try { const url = new URL(raw.replace(/&amp;/g, '&')); return url.protocol === 'https:' && ['creativecommons.org', 'www.creativecommons.org', 'commons.wikimedia.org'].includes(url.hostname) && !url.username && !url.password ? url.toString() : undefined; } catch { return undefined; }
+}
+function licensed(name: string, copyrighted: string | undefined): boolean {
+  const compact = name.toLowerCase().replace(/[-_ ]/g, '');
+  return /^(ccby(sa)?\d(?:\.\d)?|cc0(?:1\.0)?|cczero|publicdomain|domíniopúblico|pd(?:old|user|self|usgov|art|textlogo)?)/.test(compact) || copyrighted === 'False';
+}
 
-async function photograph(url: URL, signal: AbortSignal): Promise<Buffer> {
-  let current = url;
-  for (let redirects = 0; redirects <= 2; redirects++) {
-    const response = await fetch(current, { signal, redirect: "manual", cache: "no-store", headers: { Accept: "image/jpeg,image/png,image/webp", "User-Agent": "GlobeExpress/1.0 (https://github.com/Helio965/Globe-Express)" } });
-    if (response.status >= 300 && response.status < 400) {
-      await response.body?.cancel();
-      const location = response.headers.get("location");
-      const allowed = location ? commonsImageSchema.safeParse(new URL(location, current).href) : undefined;
-      if (allowed?.success && redirects < 2) { current = allowed.data; continue; }
-      throw new ServiceError("INVALID_IMAGE", "A fonte da fotografia não está disponível.", 502);
-    }
-    if (!response.ok || !/^image\/(?:jpeg|png|webp)(?:;|$)/i.test(response.headers.get("content-type") || "")) {
-      await response.body?.cancel();
-      throw new ServiceError("IMAGE_UNAVAILABLE", "Não foi possível carregar esta fotografia.", 502);
-    }
-    if (Number(response.headers.get("content-length")) > maxBytes || !response.body) {
-      await response.body?.cancel();
-      throw new ServiceError("IMAGE_TOO_LARGE", "Esta fotografia excede o limite de processamento.", 413);
-    }
-    const reader = response.body.getReader();
-    const chunks: Buffer[] = [];
-    let size = 0;
-    try {
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        size += value.byteLength;
-        if (size > maxBytes) { await reader.cancel(); throw new ServiceError("IMAGE_TOO_LARGE", "Esta fotografia excede o limite de processamento.", 413); }
-        chunks.push(Buffer.from(value));
-      }
-    } finally { reader.releaseLock(); }
-    return Buffer.concat(chunks);
+/** Discover files only in the exact Commons category linked by the place's Wikidata entity. */
+export async function getCommonsCategoryFiles(category: string, signal?: AbortSignal): Promise<string[]> {
+  if (!category || category.length > 300 || category.includes('|')) return [];
+  const url = new URL('https://commons.wikimedia.org/w/api.php');
+  url.search = new URLSearchParams({ action: 'query', format: 'json', formatversion: '2', origin: '*', list: 'categorymembers', cmtitle: `Category:${category}`, cmnamespace: '6', cmtype: 'file', cmlimit: '40' }).toString();
+  const parsed = categorySchema.safeParse(await upstreamJson(url, { signal }));
+  if (!parsed.success) throw new ApiError('UPSTREAM_INVALID', 'O Wikimedia Commons retornou uma categoria incompleta.', 502);
+  return parsed.data.query.categorymembers.filter((file) => file.ns === 6).map((file) => file.title);
+}
+
+/** Candidates come from an entity's P18, lead image or its linked Commons category. */
+export async function getCommonsPhotos(fileNames: string[], placeName: string, signal?: AbortSignal, primaryFileNames: string[] = fileNames.slice(0, 2)): Promise<Photo[]> {
+  const normalizedFile = (name: string) => name.replace(/^(?:File|Ficheiro|Arquivo):/i, '').replace(/_/g, ' ').trim();
+  const primaryFiles = new Set(primaryFileNames.map((name) => normalizedFile(name).toLowerCase()));
+  const candidates = [...new Set(fileNames.map(normalizedFile).filter((name) => /\.(?:jpe?g|png|webp)$/i.test(name) && !/(?:\b(?:flag|logo|coat of arms|locator|map|diagram|icon|seal|signature|graph|chart)\b|bandeira|brasão|mapa)/i.test(name)))].slice(0, 40);
+  if (!candidates.length) return [];
+  const url = new URL('https://commons.wikimedia.org/w/api.php');
+  url.search = new URLSearchParams({ action: 'query', format: 'json', formatversion: '2', origin: '*', titles: candidates.map((name) => `File:${name}`).join('|'), prop: 'imageinfo|categories', iiprop: 'url|size|mime|extmetadata', iiurlwidth: '1920', cllimit: '30' }).toString();
+  const thumbnailsUrl = new URL(url);
+  thumbnailsUrl.searchParams.set('prop', 'imageinfo');
+  thumbnailsUrl.searchParams.set('iiprop', 'url');
+  thumbnailsUrl.searchParams.set('iiurlwidth', '480');
+  thumbnailsUrl.searchParams.delete('cllimit');
+  // Wikimedia now rounds thumbnail URLs to supported sizes. Use the URL supplied by its API.
+  const [metadataResponse, thumbnailResponse] = await Promise.allSettled([upstreamJson(url, { signal }), upstreamJson(thumbnailsUrl, { signal })]);
+  if (metadataResponse.status === 'rejected') throw metadataResponse.reason;
+  const parsed = responseSchema.safeParse(metadataResponse.value);
+  if (!parsed.success || !parsed.data.query) throw new ApiError('UPSTREAM_INVALID', 'O Wikimedia Commons retornou uma resposta incompleta.', 502);
+  const smaller = thumbnailResponse.status === 'fulfilled' ? thumbnailsSchema.safeParse(thumbnailResponse.value) : undefined;
+  const thumbnails = new Map<string, string>();
+  if (smaller?.success) for (const page of smaller.data.query?.pages ?? []) {
+    const image = page.imageinfo?.[0];
+    const thumbnail = trustedMediaUrl(image?.thumburl) ?? trustedMediaUrl(image?.url);
+    if (thumbnail) thumbnails.set(page.title, thumbnail);
   }
-  throw new ServiceError("IMAGE_UNAVAILABLE", "A fotografia não pôde ser carregada.", 502);
-}
-
-/** Only licensed Commons raster images use this optimizer; Google photos stay uncached. */
-export async function optimizeCommonsImage(url: URL, width: number, signal?: AbortSignal): Promise<Uint8Array<ArrayBuffer>> {
-  const verified = commonsImageSchema.parse(url.href);
-  const expiresAt = Date.now() + timeoutMs;
-  const bounded = deadline(signal, timeoutMs);
-  let release: (() => void) | undefined;
-  try {
-    release = await acquireSlot(bounded);
-    bounded.throwIfAborted();
-    const input = await photograph(verified, bounded);
-    bounded.throwIfAborted();
-    const seconds = Math.max(1, Math.min(15, Math.floor((expiresAt - Date.now()) / 1000)));
-    const output = await sharp(input, { limitInputPixels: 80_000_000, animated: false }).timeout({ seconds }).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 78 }).toBuffer();
-    bounded.throwIfAborted();
-    return new Uint8Array(output);
-  } catch (error) {
-    if (error instanceof ServiceError) throw error;
-    if (bounded.aborted || (error instanceof Error && /\btimeout\b|timed out/i.test(error.message))) throw new ServiceError("TIMEOUT", "A fotografia demorou demais para carregar ou processar.", 504);
-    throw new ServiceError("IMAGE_UNAVAILABLE", "Não foi possível processar esta fotografia.", 502);
-  } finally { release?.(); }
+  const seen = new Set<string>();
+  const photos: Photo[] = [];
+  for (const page of parsed.data.query.pages) {
+    const info = page.imageinfo?.[0];
+    if (!info || info.width < 800 || info.height < 400 || !/^image\/(?:jpeg|png|webp)$/.test(info.mime ?? '') || info.width / info.height > 3.8) continue;
+    if (page.categories?.some((category) => /(?:AI.generated|AI generated|artificial intelligence|synthetic images|maps of|logos of|flags of)/i.test(category.title))) continue;
+    const metadata = info.extmetadata ?? {};
+    const license = plainText(metadata.LicenseShortName?.value || metadata.UsageTerms?.value, 160);
+    const author = plainText(metadata.Artist?.value || metadata.Credit?.value, 350);
+    if (!license || !author || !licensed(license, metadata.Copyrighted?.value)) continue;
+    if (/(?:AI.generated|AI generated|generated by (?:midjourney|dall|stable diffusion))/i.test(plainText(metadata.ImageDescription?.value))) continue;
+    const originalUrl = trustedMediaUrl(info.url);
+    const displayUrl = trustedMediaUrl(info.thumburl) ?? originalUrl;
+    if (!originalUrl || !displayUrl || seen.has(originalUrl)) continue;
+    seen.add(originalUrl);
+    photos.push({ id: page.title, url: displayUrl, thumbnailUrl: thumbnails.get(page.title) ?? displayUrl, width: info.width, height: info.height, alt: plainText(metadata.ImageDescription?.value, 350) || `Fotografia de ${placeName}`, author, license, licenseUrl: safeLicenseUrl(metadata.LicenseUrl?.value), sourceUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g, '_'))}`, provider: 'commons' });
+  }
+  return photos.sort((a, b) => {
+    const score = (photo: Photo) => (photo.width >= photo.height * 1.2 && photo.width <= photo.height * 2.8 ? 2e8 : 0) + (primaryFiles.has(normalizedFile(photo.id).toLowerCase()) ? 1e8 : 0) + Math.min(photo.width * photo.height, 2e7);
+    return score(b) - score(a);
+  }).slice(0, 10);
 }
