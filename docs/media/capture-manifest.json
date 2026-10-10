@@ -1,0 +1,1153 @@
+{
+  "schemaVersion": 1,
+  "mode": "screenshots",
+  "createdAt": "2026-10-10T22:00:12.370Z",
+  "sourceGitSHA": "14c94113f88692edf0eca8bf38308fc6dfdeb1b9",
+  "sourceRepository": "https://github.com/Helio965/Globe-Express",
+  "provider": "open",
+  "searchInput": "Brasília",
+  "tlsVerification": true,
+  "mockedResponses": false,
+  "reducedMotion": "no-preference",
+  "screenshots": [
+    {
+      "file": "docs/media/screenshots/01-home.png",
+      "label": "Tela inicial",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 1421087,
+      "photoIds": [],
+      "visibleImages": [],
+      "credits": []
+    },
+    {
+      "file": "docs/media/screenshots/02-search.png",
+      "label": "Pesquisa real de localidades",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 281381,
+      "photoIds": [],
+      "visibleImages": [
+        {
+          "url": "https://tile.openstreetmap.org/2/1/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/3/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/0/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/1.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/0.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/2.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/2/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/2/1/3.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        }
+      ],
+      "credits": []
+    },
+    {
+      "file": "docs/media/screenshots/03-map.png",
+      "label": "Mapa OpenStreetMap com Brasília",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 1792562,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/751/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/750/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/752/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/749/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/753/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/748/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/754/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1114.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1115.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1113.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1116.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1112.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/747/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://tile.openstreetmap.org/11/755/1117.png",
+          "alt": "",
+          "naturalWidth": 256,
+          "naturalHeight": 256
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/500px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 500,
+          "naturalHeight": 239
+        }
+      ],
+      "credits": [
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia"
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/04-cinematic.png",
+      "label": "Experiência cinematográfica: Brasília",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 2875738,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381482426).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381921855).jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 1920,
+          "naturalHeight": 919
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto: Renato Alves/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        }
+      ],
+      "credits": [
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por victoria.camara · CC BY 3.0 · Ver fotografia",
+        "Fotografia por Luis Dantas · Public domain · Ver fotografia"
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/05-details.png",
+      "label": "Informações documentadas de Brasília",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 1105828,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381482426).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381921855).jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 1920,
+          "naturalHeight": 919
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto: Renato Alves/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        }
+      ],
+      "credits": [
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por victoria.camara · CC BY 3.0 · Ver fotografia",
+        "Fotografia por Luis Dantas · Public domain · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia"
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/06-gallery.png",
+      "label": "Fotografias e locais próximos reais",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1084
+      },
+      "bytes": 1050507,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg",
+        "File:Rodoviária do Plano Piloto.jpg",
+        "File:BSB SDS 01.jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/500px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 500,
+          "naturalHeight": 239
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Rodovi%C3%A1ria_do_Plano_Piloto.jpg/500px-Rodovi%C3%A1ria_do_Plano_Piloto.jpg",
+          "alt": "Vista aérea da região da Rodoviária do Plano Piloto, SHS, SBS e Asa Sul, em Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/BSB_SDS_01.jpg/500px-BSB_SDS_01.jpg",
+          "alt": "Central internal shot of Brasilia's South Recreational Sector, aka \"Conic\"",
+          "naturalWidth": 500,
+          "naturalHeight": 375
+        }
+      ],
+      "credits": [
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por victoria.camara · CC BY 3.0 · Ver fotografia",
+        "Fotografia por Luis Dantas · Public domain · Ver fotografia"
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/07-favorites.png",
+      "label": "Favoritos e histórico, com recuperação real de uma referência",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dimensions": {
+        "width": 1920,
+        "height": 1080
+      },
+      "bytes": 392223,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381482426).jpg",
+        "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381921855).jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 1920,
+          "naturalHeight": 919
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto: Renato Alves/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg",
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "naturalWidth": 500,
+          "naturalHeight": 333
+        }
+      ],
+      "credits": [
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Agência Brasília from Brasília, Brasil · CC BY 2.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por victoria.camara · CC BY 3.0 · Ver fotografia",
+        "Fotografia por Luis Dantas · Public domain · Ver fotografia"
+      ]
+    },
+    {
+      "file": "docs/media/screenshots/08-mobile.png",
+      "label": "Interface adaptada para smartphone",
+      "viewport": {
+        "width": 430,
+        "height": 932
+      },
+      "dimensions": {
+        "width": 430,
+        "height": 932
+      },
+      "bytes": 465655,
+      "photoIds": [
+        "File:Planalto Central (cropped).jpg"
+      ],
+      "visibleImages": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "naturalWidth": 1920,
+          "naturalHeight": 919
+        }
+      ],
+      "credits": [
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por Arturdiasr · CC BY-SA 4.0 · Ver fotografia",
+        "Fotografia por victoria.camara · CC BY 3.0 · Ver fotografia",
+        "Fotografia por Luis Dantas · Public domain · Ver fotografia"
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "location": {
+        "reference": {
+          "provider": "wikipedia",
+          "id": "449",
+          "language": "pt"
+        },
+        "name": "Brasília",
+        "coordinates": {
+          "lat": -15.79389,
+          "lng": -47.88278
+        },
+        "kind": "capital do Brasil",
+        "sourceUrl": "https://pt.wikipedia.org/wiki/Bras%C3%ADlia",
+        "attributions": [
+          "Wikipedia · texto sob licença CC BY-SA"
+        ],
+        "country": "Brasil",
+        "region": "Distrito Federal"
+      },
+      "sources": [
+        {
+          "name": "Wikipedia (português) · CC BY-SA",
+          "url": "https://pt.wikipedia.org/wiki/Bras%C3%ADlia"
+        },
+        {
+          "name": "Wikidata · dados estruturados CC0",
+          "url": "https://www.wikidata.org/wiki/Q2844"
+        },
+        {
+          "name": "Wikimedia Commons · fotografias e licenças",
+          "url": "https://commons.wikimedia.org/wiki/Category%3ABras%C3%ADlia"
+        }
+      ],
+      "warnings": [],
+      "summaryCharacters": 1100,
+      "factCount": 11,
+      "photos": [
+        {
+          "id": "File:Planalto Central (cropped).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/500px-Planalto_Central_%28cropped%29.jpg",
+          "width": 2733,
+          "height": 1308,
+          "alt": "This is a photo of a monument in Brazil identified by the ID",
+          "author": "Arturdiasr",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APlanalto_Central_(cropped).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381482426).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381482426%29.jpg",
+          "width": 6483,
+          "height": 4322,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto: Renato Alves/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381482426).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381921855).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381921855%29.jpg",
+          "width": 6720,
+          "height": 4480,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381921855).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53380561112).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561112%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561112%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561112%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561112%29.jpg",
+          "width": 6684,
+          "height": 4456,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53380561112).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381657588).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657588%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657588%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657588%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657588%29.jpg",
+          "width": 6631,
+          "height": 4421,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381657588).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381801804).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381801804%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381801804%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381801804%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381801804%29.jpg",
+          "width": 6720,
+          "height": 4480,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381801804).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381657563).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657563%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657563%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657563%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381657563%29.jpg",
+          "width": 6720,
+          "height": 4480,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Catedral de Brasília. Foto:Geovana Albuquerque/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381657563).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53380561597).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561597%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561597%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561597%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853380561597%29.jpg",
+          "width": 5472,
+          "height": 3648,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Supremo Tribunal Federal. Foto: Renato Alves/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53380561597).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381658033).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658033%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658033%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658033%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658033%29.jpg",
+          "width": 5472,
+          "height": 3648,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Supremo Tribunal Federal. Foto: Renato Alves/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381658033).jpg",
+          "provider": "commons"
+        },
+        {
+          "id": "File:07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco (53381658023).jpg",
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658023%29.jpg/1920px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658023%29.jpg",
+          "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658023%29.jpg/500px-07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_%2853381658023%29.jpg",
+          "width": 5472,
+          "height": 3648,
+          "alt": "Capital federal foi a primeira cidade moderna a receber a honraria, em dezembro de 1987; em outubro do mesmo ano, conjunto foi tombado pelo governo local e, em 1990, inscrito no livro histórico do Iphan. Na foto: Supremo Tribunal Federal. Foto: Renato Alves/Agência Brasília.",
+          "author": "Agência Brasília from Brasília, Brasil",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381658023).jpg",
+          "provider": "commons"
+        }
+      ],
+      "nearby": [
+        {
+          "location": {
+            "reference": {
+              "provider": "wikipedia",
+              "id": "1866274",
+              "language": "pt"
+            },
+            "name": "Plano Piloto (Distrito Federal)",
+            "coordinates": {
+              "lat": -15.79389,
+              "lng": -47.88278
+            },
+            "kind": "região administrativa do Distrito Federal no Brasil",
+            "sourceUrl": "https://pt.wikipedia.org/wiki/Plano_Piloto_(Distrito_Federal)",
+            "attributions": [
+              "Wikipedia · texto sob licença CC BY-SA"
+            ]
+          },
+          "distanceKm": 0,
+          "photo": {
+            "id": "File:Planalto Central (cropped).jpg",
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/1920px-Planalto_Central_%28cropped%29.jpg",
+            "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Planalto_Central_%28cropped%29.jpg/500px-Planalto_Central_%28cropped%29.jpg",
+            "width": 2733,
+            "height": 1308,
+            "alt": "This is a photo of a monument in Brazil identified by the ID",
+            "author": "Arturdiasr",
+            "license": "CC BY-SA 4.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APlanalto_Central_(cropped).jpg",
+            "provider": "commons"
+          }
+        },
+        {
+          "location": {
+            "reference": {
+              "provider": "wikipedia",
+              "id": "2662019",
+              "language": "pt"
+            },
+            "name": "Rodoviária do Plano Piloto",
+            "coordinates": {
+              "lat": -15.793389,
+              "lng": -47.882611
+            },
+            "kind": "Local geográfico documentado",
+            "sourceUrl": "https://pt.wikipedia.org/wiki/Rodovi%C3%A1ria_do_Plano_Piloto",
+            "attributions": [
+              "Wikipedia · texto sob licença CC BY-SA"
+            ]
+          },
+          "distanceKm": 0.0586,
+          "photo": {
+            "id": "File:Rodoviária do Plano Piloto.jpg",
+            "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Rodovi%C3%A1ria_do_Plano_Piloto.jpg",
+            "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Rodovi%C3%A1ria_do_Plano_Piloto.jpg/500px-Rodovi%C3%A1ria_do_Plano_Piloto.jpg",
+            "width": 1530,
+            "height": 1020,
+            "alt": "Vista aérea da região da Rodoviária do Plano Piloto, SHS, SBS e Asa Sul, em Brasília.",
+            "author": "victoria.camara",
+            "license": "CC BY 3.0",
+            "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARodovi%C3%A1ria_do_Plano_Piloto.jpg",
+            "provider": "commons"
+          }
+        },
+        {
+          "location": {
+            "reference": {
+              "provider": "wikipedia",
+              "id": "1522614",
+              "language": "pt"
+            },
+            "name": "Setor de Diversões Sul",
+            "coordinates": {
+              "lat": -15.79589049,
+              "lng": -47.88476589
+            },
+            "kind": "setor de Brasília, Brasil",
+            "sourceUrl": "https://pt.wikipedia.org/wiki/Setor_de_Divers%C3%B5es_Sul",
+            "attributions": [
+              "Wikipedia · texto sob licença CC BY-SA"
+            ]
+          },
+          "distanceKm": 0.30760000000000004,
+          "photo": {
+            "id": "File:BSB SDS 01.jpg",
+            "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/BSB_SDS_01.jpg/1920px-BSB_SDS_01.jpg",
+            "thumbnailUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/BSB_SDS_01.jpg/500px-BSB_SDS_01.jpg",
+            "width": 2048,
+            "height": 1536,
+            "alt": "Central internal shot of Brasilia's South Recreational Sector, aka \"Conic\"",
+            "author": "Luis Dantas",
+            "license": "Public domain",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABSB_SDS_01.jpg",
+            "provider": "commons"
+          }
+        },
+        {
+          "location": {
+            "reference": {
+              "provider": "wikipedia",
+              "id": "7656572",
+              "language": "pt"
+            },
+            "name": "Empresa Brasileira de Pesquisa e Inovação Industrial",
+            "coordinates": {
+              "lat": -15.79058234,
+              "lng": -47.87901583
+            },
+            "kind": "Organização social brasileira que atua no fomento à inovação tecnológica na indústria, apoiando projetos de pesquisa e desenvolvimento em cooperação entre empresas e instituições científicas e tecnológicas.",
+            "sourceUrl": "https://pt.wikipedia.org/wiki/Empresa_Brasileira_de_Pesquisa_e_Inova%C3%A7%C3%A3o_Industrial",
+            "attributions": [
+              "Wikipedia · texto sob licença CC BY-SA"
+            ]
+          },
+          "distanceKm": 0.5454
+        }
+      ]
+    }
+  ],
+  "metadataQueries": [
+    {
+      "reference": {
+        "provider": "wikipedia",
+        "id": "449",
+        "language": "pt"
+      },
+      "source": "Separate real POST /api/destination with Accept: application/json; application response was not intercepted or replaced.",
+      "reason": "Chromium/CDP consumed-stream response-body limitation. UI rendering, destination name and photographed image URLs are verified separately."
+    },
+    {
+      "reference": {
+        "provider": "wikipedia",
+        "id": "449",
+        "language": "pt"
+      },
+      "source": "Separate real POST /api/destination with Accept: application/json; application response was not intercepted or replaced.",
+      "reason": "Chromium/CDP consumed-stream response-body limitation. UI rendering, destination name and photographed image URLs are verified separately."
+    },
+    {
+      "reference": {
+        "provider": "wikipedia",
+        "id": "449",
+        "language": "pt"
+      },
+      "source": "Separate real POST /api/destination with Accept: application/json; application response was not intercepted or replaced.",
+      "reason": "Chromium/CDP consumed-stream response-body limitation. UI rendering, destination name and photographed image URLs are verified separately."
+    }
+  ],
+  "networkSummary": {
+    "tile.openstreetmap.org": {
+      "responses": 113,
+      "successfulResponses": 113,
+      "statuses": [
+        200
+      ]
+    },
+    "thumb.wikimedia.org": {
+      "responses": 12,
+      "successfulResponses": 12,
+      "statuses": [
+        200
+      ]
+    }
+  },
+  "issues": [],
+  "suggestion": "Brasília\ncapital do Brasil\nWikipédia"
+}
