@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-10T22:49:28.310Z",
+  "browser": "151.0.7922.173",
+  "serving": {
+    "byteRanges": true
+  },
+  "metadata": {
+    "duration": 98.033333,
+    "width": 1920,
+    "height": 1080,
+    "controls": true,
+    "playsInline": true
+  },
+  "playback": true,
+  "seeks": [
+    9.8,
+    39.2,
+    58.8,
+    78.4,
+    95.1
+  ],
+  "mediaError": null,
+  "links": [
+    {
+      "text": "Baixar vídeo",
+      "status": 200
+    },
+    {
+      "text": "Baixar legendas SRT",
+      "status": 200
+    },
+    {
+      "text": "Autores, fontes e licenças",
+      "status": 200
+    }
+  ],
+  "mobile": {
+    "width": 393,
+    "playback": true,
+    "playerOverflow": false,
+    "creditsOverflow": false
+  },
+  "pageErrors": []
+}

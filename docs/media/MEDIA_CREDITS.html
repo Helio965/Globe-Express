@@ -1,102 +1,174 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Créditos — World Explorer</title>
-<style>html{font-family:system-ui,sans-serif;background:#101c1e;color:#f4f1e9}body{max-width:1120px;margin:40px auto;padding:0 20px;line-height:1.7}a{color:#dcc28b}a:focus-visible{outline:2px solid #dcc28b;outline-offset:4px}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}th,td{padding:12px;border:1px solid #425351;text-align:left}h1,h2{line-height:1.3}nav{margin-bottom:24px}</style></head><body><nav><a href="video/">Assistir à demonstração</a> · <a href="MEDIA_CREDITS.md">Créditos em Markdown</a></nav><main>
-<h1 dir="auto">Créditos das mídias</h1>
-<p dir="auto">As capturas de tela e a demonstração foram produzidas com a aplicação real e consultas aos serviços Wikimedia. Não incluem mapas, fotos ou dados do Google Maps Platform. As credenciais Google não estavam configuradas nesta gravação.</p>
-<h2 dir="auto">Licença das capturas e da edição</h2>
-<p dir="auto">Capturas de tela, miniatura, legendas e edição do vídeo: © 2026 Hélio / projeto Globe-Express, <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow">CC BY-SA 4.0</a>, respeitando as licenças originais dos elementos abaixo. A licença MIT do código-fonte permanece em vigor e não substitui as licenças das fotografias, textos e marcas. Atribua a produção a “World Explorer — Helio965/Globe-Express” e acompanhe qualquer redistribuição destas mídias com este arquivo de créditos ou um link para sua versão publicada.</p>
-<p dir="auto">Adaptações: a interface redimensiona, comprime em WebP e recorta/enquadra fotografias; sobrepõe texto e gradientes. As capturas registram esses enquadramentos. A miniatura e o vídeo acrescentam títulos/legendas, cortes e transições. Fontes e autores originais não endossam o projeto.</p>
-<h2 dir="auto">Fotografias incorporadas</h2>
-<p dir="auto">Autoria, licença e origem confirmadas na API do Wikimedia Commons em 10 de outubro de 2026. A tabela identifica as quatro imagens disponíveis na galeria de Lisboa e as quatro fotografias dos cartões próximos reproduzidos na documentação.</p>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>World Explorer — Autores, fontes e licenças</title>
+<style>
+:root { color-scheme: dark; background: #101c1e; color: #f4f1e9; font-family: system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { width: min(1120px, 100%); margin: auto; padding: 32px 20px; line-height: 1.65; overflow-wrap: anywhere; }
+a { color: #dcc28b; text-underline-offset: .2em; }
+a:focus-visible { outline: 2px solid #dcc28b; outline-offset: 4px; }
+nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 32px; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; }
+h2 { margin-top: 40px; }
+table { display: block; overflow-x: auto; border-collapse: collapse; width: 100%; margin: 24px 0; }
+th, td { border: 1px solid #425351; padding: 12px; min-width: 160px; vertical-align: top; }
+code { overflow-wrap: anywhere; }
+</style>
+</head>
+<body><main>
+<nav aria-label="Documentação"><a href="video/">Voltar ao vídeo</a><a href="MEDIA_CREDITS.md">Créditos em Markdown</a></nav>
+<h1 dir="auto">Créditos das mídias demonstrativas</h1>
+<p dir="auto">As capturas mostram o <strong>World Explorer</strong>, do repositório <strong>Globe-Express</strong>, em funcionamento no modo aberto. Foram realizadas em 10 de outubro de 2026, a partir do commit <a href="https://github.com/Helio965/Globe-Express/tree/14c94113f88692edf0eca8bf38308fc6dfdeb1b9"><code class="notranslate">14c94113f88692edf0eca8bf38308fc6dfdeb1b9</code></a>, com pesquisa real por Brasília. A interface, as animações, os serviços e os dados da aplicação foram preservados.</p>
+<p dir="auto">Os PNGs são capturas diretas do Chromium. O vídeo registra interações reais e contínuas no navegador, incluindo pesquisa, seleção, zoom, deslocamento do mapa, apresentação, detalhes, troca de fotografia, locais próximos, favoritos, histórico e retorno à tela inicial. Não foram usados mocks, interceptação ou substituição de respostas, fotografias de outro destino ou imagens geradas.</p>
+<h2 dir="auto">Registro e edição</h2>
+<p dir="auto">O <a href="capture-manifest.json">manifest das capturas</a> registra o commit, os viewports, as dimensões dos PNGs, as URLs das imagens carregadas, os identificadores Commons e os metadados recebidos. A verificação TLS permaneceu habilitada.</p>
+<p dir="auto">Para registrar os metadados completos, a automação fez três consultas JSON adicionais durante as capturas e duas durante a gravação, usando o endpoint real <code class="notranslate">POST /api/destination</code>. Essas consultas foram necessárias porque o Chromium não disponibilizou o corpo da resposta em streaming para inspeção. Elas não interceptaram nem substituíram a resposta NDJSON usada pela interface; o nome do destino e as URLs das fotografias renderizadas foram conferidos separadamente.</p>
+<p dir="auto">A gravação original possui viewport de 1920 × 960 e 30 FPS. A edição acrescenta uma faixa inferior de 120 pixels para as explicações em português, mantendo a interface e seus créditos visíveis na composição de 1920 × 1080. O redimensionamento, os recortes, as sobreposições e as transições das fotografias dentro da aplicação são os da interface original. A miniatura utiliza um frame real da apresentação de Brasília e recebe somente os textos editoriais da capa.</p>
+<p dir="auto">O vídeo é <strong>silencioso, com explicações e legendas em português brasileiro</strong>. Não havia uma ferramenta de narração pt-BR com qualidade adequada neste ambiente. Não foram utilizados música, voz sintética ou efeitos sonoros.</p>
+<h2 dir="auto">Fotografias exibidas</h2>
+<p dir="auto">Os links de cada obra levam ao arquivo original no Wikimedia Commons, onde estão sua descrição, autoria e condições de reutilização. As licenças e os campos <code class="notranslate">Artist</code>, <code class="notranslate">Credit</code> e <code class="notranslate">ImageDescription</code> foram reconfirmados pela API Commons <code class="notranslate">imageinfo/extmetadata</code> em 10 de outubro de 2026. Os nomes dos fotógrafos da Agência Brasília foram preservados a partir das descrições, além do crédito institucional informado em <code class="notranslate">Artist</code>.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
-<th>Nº</th>
-<th>Fotografia / página da licença</th>
-<th>Autor</th>
-<th>Licença original</th>
-<th>Origem</th>
-<th>Uso na interface</th>
+<th>Obra / arquivo Commons</th>
+<th>Autoria</th>
+<th>Licença</th>
+<th>Onde aparece</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Lisboa837.png" rel="nofollow">Lisboa837.png</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/User:Lacobrigo" rel="nofollow">Lacobrigo</a></td>
-<td><a href="https://creativecommons.org/licenses/by-sa/4.0" rel="nofollow">CC BY-SA 4.0</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Lisboa837.png" rel="nofollow">Commons</a></td>
-<td>Galeria de Lisboa</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3APlanalto_Central_(cropped).jpg" rel="nofollow">Planalto Central (cropped).jpg</a></td>
+<td>Arturdiasr, conforme o registro de autoria da obra</td>
+<td><a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow">CC BY-SA 4.0</a></td>
+<td>PNGs 03, 04, 05, 06, 07 e 08; fotografia principal, prévia no mapa e cartão do Plano Piloto no vídeo; fundo da miniatura</td>
 </tr>
 <tr>
-<td>2</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Lisbon_(36831596786)_(cropped).jpg" rel="nofollow">Lisbon (36831596786) (cropped).jpg</a></td>
-<td><a href="https://www.flickr.com/people/158619309@N03" rel="nofollow">Deensel</a></td>
-<td><a href="https://creativecommons.org/licenses/by/2.0" rel="nofollow">CC BY 2.0</a></td>
-<td><a href="https://www.flickr.com/photos/deensel/36831596786/" rel="nofollow">original</a> · <a href="https://commons.wikimedia.org/wiki/File:Lisbon_(36831596786)_(cropped).jpg" rel="nofollow">Commons</a></td>
-<td>Galeria de Lisboa</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381482426).jpg" rel="nofollow">Catedral de Brasília — 53381482426</a></td>
+<td>Renato Alves / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>, Brasília, Brasil; <a href="https://www.flickr.com/photos/agenciabrasilia/53381482426/" rel="nofollow">publicação de origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+<td>Miniaturas nos PNGs 04, 05 e 07; miniatura e fotografia principal após a troca na cena 6 do vídeo</td>
 </tr>
 <tr>
-<td>3</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Aeroporto_Humberto_Delgado_(Portela_Airport_Aeroporto_de_Lisboa),_Lisbon,_Portugal_(51323558287).jpg" rel="nofollow">Aeroporto Humberto Delgado (Portela Airport Aeroporto de Lisboa), Lisbon, Portugal (51323558287).jpg</a></td>
-<td><a href="https://www.flickr.com/people/41980486@N07" rel="nofollow">Sharon Hahn Darlin</a></td>
-<td><a href="https://creativecommons.org/licenses/by/2.0" rel="nofollow">CC BY 2.0</a></td>
-<td><a href="https://www.flickr.com/photos/sharonhahndarlin/51323558287/" rel="nofollow">original</a> · <a href="https://commons.wikimedia.org/wiki/File:Aeroporto_Humberto_Delgado_(Portela_Airport_Aeroporto_de_Lisboa),_Lisbon,_Portugal_(51323558287).jpg" rel="nofollow">Commons</a></td>
-<td>Galeria de Lisboa</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381921855).jpg" rel="nofollow">Catedral de Brasília — 53381921855</a></td>
+<td>Geovana Albuquerque / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>, Brasília, Brasil; <a href="https://www.flickr.com/photos/agenciabrasilia/53381921855/" rel="nofollow">publicação de origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+<td>Miniaturas nos PNGs 04, 05 e 07 e no vídeo</td>
 </tr>
 <tr>
-<td>4</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Catedral,_Lisboa,_Portugal,_2022-07-24,_DD_24.jpg" rel="nofollow">Catedral, Lisboa, Portugal, 2022-07-24, DD 24.jpg</a></td>
-<td><a href="https://www.wikidata.org/wiki/Q28147777" rel="nofollow">Diego Delso</a></td>
-<td><a href="https://creativecommons.org/licenses/by-sa/4.0" rel="nofollow">CC BY-SA 4.0</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Catedral,_Lisboa,_Portugal,_2022-07-24,_DD_24.jpg" rel="nofollow">Commons</a></td>
-<td>Galeria de Lisboa</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53380561112).jpg" rel="nofollow">Catedral de Brasília — 53380561112</a></td>
+<td>Geovana Albuquerque / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>, Brasília, Brasil; <a href="https://www.flickr.com/photos/agenciabrasilia/53380561112/" rel="nofollow">publicação de origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+<td>Miniatura que passa a aparecer após a troca de fotografia na cena 6 do vídeo</td>
 </tr>
 <tr>
-<td>5</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Igreja_do_Sagrado_Cora%C3%A7%C3%A3o_de_Jesus_(Lisboa)_12.jpg" rel="nofollow">Igreja do Sagrado Coração de Jesus (Lisboa) 12.jpg</a></td>
-<td>DiogoBaptista</td>
-<td><a href="https://creativecommons.org/licenses/by-sa/4.0" rel="nofollow">CC BY-SA 4.0</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Igreja_do_Sagrado_Cora%C3%A7%C3%A3o_de_Jesus_(Lisboa)_12.jpg" rel="nofollow">Commons</a></td>
-<td>Cartão Igreja do Coração de Jesus (Lisboa)</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3ARodovi%C3%A1ria_do_Plano_Piloto.jpg" rel="nofollow">Rodoviária do Plano Piloto.jpg</a></td>
+<td>victoria.camara; fonte e crédito original registrados na página Commons</td>
+<td><a href="https://creativecommons.org/licenses/by/3.0/" rel="nofollow">CC BY 3.0</a></td>
+<td>Cartão de local próximo no PNG 06 e na cena 6 do vídeo</td>
 </tr>
 <tr>
-<td>6</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Franjinhas_Teot%C3%B3nio_Pereira_09900_1.jpg" rel="nofollow">Franjinhas Teotónio Pereira 09900 1.jpg</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/User:Manuelvbotelho" rel="nofollow">Manuelvbotelho</a></td>
-<td><a href="https://creativecommons.org/licenses/by-sa/3.0" rel="nofollow">CC BY-SA 3.0</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Franjinhas_Teot%C3%B3nio_Pereira_09900_1.jpg" rel="nofollow">Commons</a></td>
-<td>Cartão Edifício Franjinhas</td>
-</tr>
-<tr>
-<td>7</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Rua_de_Santa_Marta,_Lisboa_(33951665062).jpg" rel="nofollow">Rua de Santa Marta, Lisboa (33951665062).jpg</a></td>
-<td><a href="https://www.flickr.com/people/75183919@N00" rel="nofollow">Benjamín Mejías Valencia from Santiago, Chile</a></td>
-<td><a href="https://creativecommons.org/licenses/by/2.0" rel="nofollow">CC BY 2.0</a></td>
-<td><a href="https://www.flickr.com/photos/benjaminm31/33951665062/" rel="nofollow">original</a> · <a href="https://commons.wikimedia.org/wiki/File:Rua_de_Santa_Marta,_Lisboa_(33951665062).jpg" rel="nofollow">Commons</a></td>
-<td>Cartão Largo de Andaluz</td>
-</tr>
-<tr>
-<td>8</td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Embaixada_do_Chipre,_Lisboa_01.jpg" rel="nofollow">Embaixada do Chipre, Lisboa 01.jpg</a></td>
-<td>Joehawkins</td>
-<td><a href="https://creativecommons.org/licenses/by-sa/4.0" rel="nofollow">CC BY-SA 4.0</a></td>
-<td><a href="https://commons.wikimedia.org/wiki/File:Embaixada_do_Chipre,_Lisboa_01.jpg" rel="nofollow">Commons</a></td>
-<td>Cartão Embaixada do Chipre em Lisboa</td>
+<td><a href="https://commons.wikimedia.org/wiki/File%3ABSB_SDS_01.jpg" rel="nofollow">BSB SDS 01.jpg</a></td>
+<td><a href="https://commons.wikimedia.org/wiki/User:Luis_Dantas" rel="nofollow">Luis Dantas</a></td>
+<td>Domínio público, disponibilizado pelo próprio autor (<code class="notranslate">PD-self</code>); <a href="https://commons.wikimedia.org/wiki/File%3ABSB_SDS_01.jpg" rel="nofollow">declaração na origem</a></td>
+<td>Cartão do Setor de Diversões Sul no PNG 06 e na cena 6 do vídeo</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
-<p dir="auto">A montagem Lisboa837.png é obra declarada própria de Lacobrigo na página do Commons, com 1021 × 627 pixels. O panorama de Deensel tem 5719 × 2960 pixels e foi selecionado pela própria galeria como imagem principal da apresentação. A cena de navegação pela galeria apresenta a fotografia do aeroporto por Sharon Hahn Darlin. O recorte no nome “(cropped)” da fotografia de Deensel já pertence à obra disponibilizada no Commons; a aplicação aplica seu próprio enquadramento adicional.</p>
-<p dir="auto">A fotografia de Manuelvbotelho permanece identificada como CC BY-SA 3.0; a adaptação composta é distribuída sob a versão posterior CC BY-SA 4.0, com atribuição e identificação da licença original. Fotografias CC BY 2.0 também mantêm seus créditos/licença originais; esta edição não transfere sua titularidade.</p>
-<h2 dir="auto">Texto e dados geográficos</h2>
-<p dir="auto">Texto de Lisboa: <a href="https://pt.wikipedia.org/wiki/Lisboa" rel="nofollow">colaboradores da Wikipédia</a>, <a href="https://pt.wikipedia.org/w/index.php?title=Lisboa&amp;action=history" rel="nofollow">histórico de autores</a>, <a href="https://pt.wikipedia.org/w/index.php?title=Lisboa&amp;oldid=73144624" rel="nofollow">revisão 73144624</a> de 2026-10-07T07:39:10Z, sob <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow">CC BY-SA 4.0</a>. A aplicação extrai trechos e apresenta um resumo do artigo; as capturas e o vídeo reproduzem esses trechos junto à interface.</p>
-<p dir="auto">Dados estruturados: <a href="https://www.wikidata.org/wiki/Q597" rel="nofollow">Wikidata Q597 — Lisboa</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="nofollow">CC0 1.0</a>. Valores e cobertura correspondem ao retorno consultado na gravação, e não a uma declaração de atualização permanente.</p>
-<h2 dir="auto">Interface e componentes</h2>
-<p dir="auto">Interface e globo ilustrativo: Globe-Express, © 2026 Hélio, <a href="../../LICENSE">MIT</a>. Tipografia Oswald: © 2016 The Oswald Project Authors, <a href="https://github.com/googlefonts/OswaldFont/blob/main/OFL.txt">SIL Open Font License 1.1</a>. Ícones Lucide: © Lucide Contributors 2026, com porções Feather © Cole Bemis 2013–2026, <a href="https://github.com/lucide-icons/lucide/blob/main/LICENSE">ISC/MIT</a>. A licença OFL da fonte não se estende aos documentos produzidos com ela.</p>
-<p dir="auto">Tipografia acrescentada aos títulos e legendas do vídeo e da miniatura: Open Sans, dados digitalizados © 2010–2011 Google Corporation, <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow">Apache License 2.0</a>, conforme os avisos da versão instalada no ambiente. As mídias reproduzem os caracteres renderizados; não incluem arquivos de fontes para instalação.</p>
-<h2 dir="auto">Produção e redistribuição</h2>
-<p dir="auto">A gravação registra a interface real no Chromium, por Playwright, sem respostas simuladas. O FFmpeg organiza os trechos, ajusta o enquadramento e acrescenta títulos, legendas explicativas em português brasileiro e transições discretas. O vídeo não possui narração, música ou faixa de áudio.</p>
-<p dir="auto">Os créditos visíveis da aplicação foram preservados. As legendas são disponibilizadas em SRT e também incorporadas ao MP4. Este documento acompanha as capturas, a miniatura e o vídeo; sua URL é indicada no encerramento e nos metadados do MP4. Ao redistribuir os arquivos fora do repositório, mantenha estas atribuições e os links para as licenças, acompanhando a mídia com este arquivo ou sua URL pública.</p>
-<p dir="auto">As informações e fotografias correspondem aos retornos consultados na gravação. A disponibilidade e o conteúdo das fontes podem mudar em novas execuções.</p>
-<p dir="auto">Políticas consultadas: <a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use#7._Licensing_of_Content" rel="nofollow">Termos de Uso Wikimedia — licenciamento</a> e <a href="https://www.wikidata.org/wiki/Wikidata:Licensing" rel="nofollow">Licenciamento Wikidata</a>. As URLs específicas Creative Commons foram obtidas dos metadados originais dos arquivos.</p>
+<p dir="auto">As três imagens da Catedral usam o título original da série <strong>“07 12 2023 - -TBT Brasília, há 36 anos Patrimônio Mundial pela Unesco”</strong>. Os números apresentados na tabela identificam os arquivos e as respectivas publicações Flickr; não são fotografias intercambiáveis.</p>
+<h3 dir="auto">Créditos complementares da galeria disponível</h3>
+<p dir="auto">Os arquivos abaixo também foram retornados pela consulta real e têm seus créditos na área de fontes da aplicação. Não são apresentados como fotografias visíveis nos PNGs nem como novas trocas de imagem demonstradas no vídeo.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Obra / arquivo Commons</th>
+<th>Autoria</th>
+<th>Licença</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381657588).jpg" rel="nofollow">Catedral de Brasília — 53381657588</a></td>
+<td>Geovana Albuquerque / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53381657588/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381801804).jpg" rel="nofollow">Catedral de Brasília — 53381801804</a></td>
+<td>Geovana Albuquerque / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53381801804/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381657563).jpg" rel="nofollow">Catedral de Brasília — 53381657563</a></td>
+<td>Geovana Albuquerque / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53381657563/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53380561597).jpg" rel="nofollow">Supremo Tribunal Federal — 53380561597</a></td>
+<td>Renato Alves / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53380561597/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381658033).jpg" rel="nofollow">Supremo Tribunal Federal — 53381658033</a></td>
+<td>Renato Alves / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53381658033/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+<tr>
+<td><a href="https://commons.wikimedia.org/wiki/File%3A07_12_2023_-_-TBT_Bras%C3%ADlia%2C_h%C3%A1_36_anos_Patrim%C3%B4nio_Mundial_pela_Unesco_(53381658023).jpg" rel="nofollow">Supremo Tribunal Federal — 53381658023</a></td>
+<td>Renato Alves / <a href="https://www.flickr.com/people/64586261@N02" rel="nofollow">Agência Brasília</a>; <a href="https://www.flickr.com/photos/agenciabrasilia/53381658023/" rel="nofollow">origem</a></td>
+<td><a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow">CC BY 2.0</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2 dir="auto">Textos, fatos e resultados de pesquisa</h2>
+<p dir="auto">Os textos enciclopédicos e as descrições exibidas são atribuídos aos colaboradores da <strong>Wikipedia em português</strong>, sob <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pt" rel="nofollow">CC BY-SA 4.0</a>. São trechos ou descrições apresentados pela aplicação, com seleção e formatação feitas por ela. Os artigos e seus históricos identificam as contribuições originais:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Conteúdo</th>
+<th>Artigo</th>
+<th>Colaboradores / histórico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brasília</td>
+<td><a href="https://pt.wikipedia.org/wiki/Bras%C3%ADlia" rel="nofollow">Artigo</a></td>
+<td><a href="https://pt.wikipedia.org/w/index.php?title=Bras%C3%ADlia&amp;action=history" rel="nofollow">Histórico</a></td>
+</tr>
+<tr>
+<td>Plano Piloto (Distrito Federal)</td>
+<td><a href="https://pt.wikipedia.org/wiki/Plano_Piloto_(Distrito_Federal)" rel="nofollow">Artigo</a></td>
+<td><a href="https://pt.wikipedia.org/w/index.php?title=Plano_Piloto_%28Distrito_Federal%29&amp;action=history" rel="nofollow">Histórico</a></td>
+</tr>
+<tr>
+<td>Rodoviária do Plano Piloto</td>
+<td><a href="https://pt.wikipedia.org/wiki/Rodovi%C3%A1ria_do_Plano_Piloto" rel="nofollow">Artigo</a></td>
+<td><a href="https://pt.wikipedia.org/w/index.php?title=Rodovi%C3%A1ria_do_Plano_Piloto&amp;action=history" rel="nofollow">Histórico</a></td>
+</tr>
+<tr>
+<td>Setor de Diversões Sul</td>
+<td><a href="https://pt.wikipedia.org/wiki/Setor_de_Divers%C3%B5es_Sul" rel="nofollow">Artigo</a></td>
+<td><a href="https://pt.wikipedia.org/w/index.php?title=Setor_de_Divers%C3%B5es_Sul&amp;action=history" rel="nofollow">Histórico</a></td>
+</tr>
+<tr>
+<td>Empresa Brasileira de Pesquisa e Inovação Industrial</td>
+<td><a href="https://pt.wikipedia.org/wiki/Empresa_Brasileira_de_Pesquisa_e_Inova%C3%A7%C3%A3o_Industrial" rel="nofollow">Artigo</a></td>
+<td><a href="https://pt.wikipedia.org/w/index.php?title=Empresa_Brasileira_de_Pesquisa_e_Inova%C3%A7%C3%A3o_Industrial&amp;action=history" rel="nofollow">Histórico</a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p dir="auto">Os fatos estruturados de Brasília são atribuídos aos colaboradores do <strong>Wikidata</strong>, entidade <a href="https://www.wikidata.org/wiki/Q2844" rel="nofollow">Q2844</a>, disponíveis sob <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="nofollow">CC0 1.0</a>. Consulte a <a href="https://www.wikidata.org/wiki/Wikidata:Copyright" rel="nofollow">política de copyright do Wikidata</a>. A licença CC0 refere-se aos dados estruturados; não altera as licenças das fotografias ou dos textos Wikipedia.</p>
+<h2 dir="auto">Cartografia</h2>
+<p dir="auto"><strong>© OpenStreetMap contributors.</strong> Os dados cartográficos são disponibilizados sob a <a href="https://opendatacommons.org/licenses/odbl/1-0/" rel="nofollow">Open Database License 1.0 — ODbL</a>. A cartografia exibida usa o serviço padrão <code class="notranslate">tile.openstreetmap.org</code> por meio do Leaflet.</p>
+<p dir="auto">A atribuição nativa do mapa foi preservada nos PNGs 02 e 03 e nas cenas de pesquisa e mapa do vídeo. A faixa editorial dessas cenas também informa <code class="notranslate">© OpenStreetMap contributors · https://www.openstreetmap.org/copyright</code>. Os mapas são capturas da renderização, sem redistribuição de um banco de dados geográfico.</p>
+<p dir="auto">Referências: <a href="https://www.openstreetmap.org/copyright" rel="nofollow">copyright e licença</a>, <a href="https://osmfoundation.org/wiki/Licence/Attribution_Guidelines" rel="nofollow">diretrizes de atribuição</a> e <a href="https://operations.osmfoundation.org/policies/tiles/" rel="nofollow">política do serviço de tiles</a>. A referência a CC BY-SA 2.0 na página de copyright do OSM aplica-se à documentação do projeto; não é usada aqui para licenciar os dados ou presumir a licença dos tiles.</p>
+<p dir="auto">Não foi utilizado conteúdo Google Maps, Places, satélite ou terreno nesta demonstração.</p>
+<h2 dir="auto">Licença da documentação audiovisual</h2>
+<p dir="auto">Crédito editorial: <strong>World Explorer / projeto Globe-Express, 2026</strong>. A montagem audiovisual, os textos explicativos, as legendas e a composição editorial da miniatura desta documentação são disponibilizados sob <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="nofollow">Creative Commons Atribuição-CompartilhaIgual 4.0 — CC BY-SA 4.0</a>, compatível com o compartilhamento da fotografia de Arturdiasr e dos textos Wikipedia incorporados. As modificações editoriais consistem nas legendas, na faixa inferior e nos textos da capa; o conteúdo mostrado pela aplicação foi preservado.</p>
+<p dir="auto">As fotografias continuam sob suas licenças individuais, inclusive o arquivo em domínio público. Os dados OSM continuam sujeitos à ODbL. Ao reutilizar estes materiais, mantenha este arquivo de créditos ou atribuições equivalentes, os links das obras e licenças, indique alterações e compartilhe adaptações sujeitas a CC BY-SA sob licença compatível.</p>
+<p dir="auto">O código da aplicação e dos scripts continua sob a <a href="../../LICENSE">licença MIT do repositório</a>. A licença MIT não concede direitos adicionais sobre fotografias, textos, cartografia ou marcas de terceiros.</p>
 </main></body></html>

@@ -1,72 +1,36 @@
 1
-00:00:00,000 --> 00:00:04,000
-Conheça o World Explorer: uma experiência visual de exploração geográfica.
+00:00:00,001 --> 00:00:09,007
+World Explorer permite descobrir lugares do planeta por
+meio de mapas, fotografias e informações geográficas.
 
 2
-00:00:04,000 --> 00:00:08,000
-Descubra lugares, paisagens e as histórias disponíveis sobre cada destino.
+00:00:09,008 --> 00:00:21,013
+A pesquisa encontra destinos nas fontes públicas, sem depender de uma lista de lugares cadastrados.
 
 3
-00:00:08,000 --> 00:00:13,967
-Pesquise uma localidade e acompanhe as sugestões reais.
+00:00:21,015 --> 00:00:33,016
+O mapa OpenStreetMap mostra a localização selecionada. Navegue pela cartografia e aproxime os detalhes.
 
 4
-00:00:13,967 --> 00:00:19,967
-Selecione um resultado para conhecer o destino e suas informações disponíveis.
+00:00:33,016 --> 00:00:44,017
+Depois da seleção, fotografias e informações disponíveis
+revelam o destino em uma experiência cinematográfica.
 
 5
-00:00:19,967 --> 00:00:26,967
-Fotografias reais e fontes enciclopédicas compõem a apresentação do destino.
+00:00:44,018 --> 00:00:57,021
+Wikipedia e Wikidata oferecem informações históricas e geográficas.
+Os dados apresentados possuem links para suas fontes.
 
 6
-00:00:26,967 --> 00:00:33,967
-A interface reúne imagem, descrição e cartões em uma experiência imersiva.
+00:00:57,021 --> 00:01:12,022
+Navegue pelas fotografias e descubra lugares próximos.
+As imagens disponíveis dependem das fontes de cada destino.
 
 7
-00:00:33,967 --> 00:00:39,967
-Navegue entre as fotografias disponíveis para conhecer outros ângulos do local.
+00:01:12,023 --> 00:01:28,030
+Salve um destino nos favoritos e consulte as explorações recentes.
+Ao reabrir, o conteúdo é consultado novamente.
 
 8
-00:00:39,967 --> 00:00:45,967
-Cada fotografia mantém seus créditos e a indicação da fonte e da licença.
-
-9
-00:00:45,967 --> 00:00:51,967
-Abra os detalhes para consultar informações geográficas e históricas.
-
-10
-00:00:51,967 --> 00:00:57,967
-Os dados disponíveis e suas referências variam conforme o destino e as fontes.
-
-11
-00:00:57,967 --> 00:01:01,967
-Os cartões apresentam outros lugares encontrados nas proximidades do destino.
-
-12
-00:01:01,967 --> 00:01:05,967
-Escolha um lugar para continuar sua exploração.
-
-13
-00:01:05,967 --> 00:01:11,967
-Salve um destino como favorito e consulte sua lista de lugares.
-
-14
-00:01:11,967 --> 00:01:17,967
-Os favoritos ficam neste navegador e permitem retomar uma exploração.
-
-15
-00:01:17,967 --> 00:01:21,967
-O histórico registra os destinos visitados neste navegador.
-
-16
-00:01:21,967 --> 00:01:25,967
-Consulte os lugares explorados recentemente para voltar a eles.
-
-17
-00:01:25,967 --> 00:01:29,967
-Projeto e documentação: github.com/Helio965/Globe-Express
-
-18
-00:01:29,967 --> 00:01:33,967
-Capturas e edição: CC BY-SA 4.0. Autores, fontes e licenças nos créditos.
-github.com/Helio965/Globe-Express/blob/64d74af5fde1cbc52ebac1893a728c50a8a4a342/docs/media/MEDIA_CREDITS.md
+00:01:28,031 --> 00:01:38,033
+WORLD EXPLORER — Explore o mundo de uma nova maneira. github.com/Helio965/Globe-Express
