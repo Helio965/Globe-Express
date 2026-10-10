@@ -40,11 +40,11 @@ export default function GlobeArt({ compact = false }: { compact?: boolean }) {
         <image
           data-earth-source="nasa-blue-marble"
           href="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/climate/2023/12/ImageWall5_1920x1200-80.jpg"
-          x="90"
-          y="90"
-          width="580"
-          height="580"
-          preserveAspectRatio="xMidYMid slice"
+          x="-68"
+          y="103"
+          width="896"
+          height="560"
+          preserveAspectRatio="none"
           clipPath="url(#planet-clip)"
         />
         <circle cx="380" cy="380" r="276" stroke="#b6d3c5" strokeOpacity="0.46" strokeWidth="1.35" />
