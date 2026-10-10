@@ -4,6 +4,45 @@ Uma aplicação de exploração geográfica que conecta pesquisa, mapa interativ
 
 A interface está em português. O projeto utiliza Next.js 16.4, React 19.3, TypeScript em modo estrito, Tailwind CSS 4.3, GSAP, Google Maps JavaScript API, Leaflet, Zod, Vitest e Playwright.
 
+## Apresentação visual
+
+![Tela inicial real do World Explorer](docs/media/screenshots/01-home.png)
+
+## 🎬 Demonstração do Sistema
+
+Veja uma exploração real de Brasília: pesquisa dinâmica, seleção no mapa OpenStreetMap, apresentação cinematográfica, informações com fontes, troca de fotografias, locais próximos, favoritos e histórico.
+
+[![Assistir à demonstração do World Explorer](docs/media/video/video-thumbnail.png)](docs/media/video/world-explorer-demo.mp4)
+
+**1 min 38 s · 1920 × 1080 · H.264 · 30 FPS.** O vídeo é silencioso, com explicações e legendas incorporadas em português brasileiro. Não havia uma ferramenta de narração pt-BR adequada no ambiente de produção.
+
+[Vídeo MP4](docs/media/video/world-explorer-demo.mp4) · [Legendas SRT](docs/media/video/subtitles-pt-br.srt) · [Fontes, autores e licenças](docs/media/MEDIA_CREDITS.md) · [Como reproduzir as capturas](docs/media/README.md)
+
+## 📸 Imagens do Sistema
+
+Capturas do sistema funcionando com serviços públicos reais, sem respostas simuladas. Clique em uma imagem para abrir o PNG completo.
+
+| Tela inicial | Pesquisa dinâmica |
+| :---: | :---: |
+| [![Identidade visual e início da exploração](docs/media/screenshots/01-home.png)](docs/media/screenshots/01-home.png) | [![Pesquisa de Brasília com resultados reais da Wikipedia](docs/media/screenshots/02-search.png)](docs/media/screenshots/02-search.png) |
+| **Mapa interativo** | **Apresentação cinematográfica** |
+| [![Brasília selecionada no mapa OpenStreetMap, com atribuição preservada](docs/media/screenshots/03-map.png)](docs/media/screenshots/03-map.png) | [![Apresentação de Brasília com fotografia e miniaturas carregadas](docs/media/screenshots/04-cinematic.png)](docs/media/screenshots/04-cinematic.png) |
+| **Detalhes e fontes** | **Galeria e locais próximos** |
+| [![Resumo e informações geográficas documentadas de Brasília](docs/media/screenshots/05-details.png)](docs/media/screenshots/05-details.png) | [![Cartões de lugares próximos com fotografias e créditos](docs/media/screenshots/06-gallery.png)](docs/media/screenshots/06-gallery.png) |
+| **Favoritos e histórico** | **Versão mobile** |
+| [![Destino salvo e referência recuperável nas explorações recentes](docs/media/screenshots/07-favorites.png)](docs/media/screenshots/07-favorites.png) | <a href="docs/media/screenshots/08-mobile.png"><img src="docs/media/screenshots/08-mobile.png" alt="Apresentação de Brasília adaptada a um smartphone de 430 por 932 pixels" height="300"></a> |
+
+## Funcionalidades demonstradas
+
+- Pesquisa de localidades e seleção de resultados consultados em tempo real.
+- Mapa com zoom, navegação e localização selecionada.
+- Apresentação com fotografias reais, animações originais e créditos.
+- Consulta de informações, fontes e lugares próximos.
+- Galeria, favoritos, histórico e nova consulta ao recuperar uma referência.
+- Interface adaptada a smartphones.
+
+A demonstração foi capturada em 10 de outubro de 2026 no modo aberto, sem chaves Google, a partir do commit [14c9411](https://github.com/Helio965/Globe-Express/commit/14c94113f88692edf0eca8bf38308fc6dfdeb1b9). A disponibilidade das fotografias e dos dados depende das fontes externas. Os [créditos das mídias](docs/media/MEDIA_CREDITS.md) identificam autores e licenças individuais.
+
 ## Como funciona
 
 1. Pesquise um lugar ou selecione coordenadas no mapa.
@@ -179,7 +218,7 @@ As chaves Google continuam ausentes neste ambiente. Portanto, mapa, pesquisa, ge
 
 ## Privacidade, atribuições e licença
 
-As páginas [Privacidade](/privacy) e [Termos de uso](/terms) explicam armazenamento local, comunicação com os provedores e atribuições. O projeto não implementa contas de usuário nem ferramentas próprias de publicidade ou análise de navegação.
+As páginas [Privacidade](src/app/privacy/page.tsx) e [Termos de uso](src/app/terms/page.tsx) explicam armazenamento local, comunicação com os provedores e atribuições. O projeto não implementa contas de usuário nem ferramentas próprias de publicidade ou análise de navegação.
 
 Fotografias permanecem sujeitas à licença de cada arquivo. Créditos, autoria, fonte e links de licença não devem ser removidos. Wikimedia Commons inclui arquivos com licenças diferentes: confira a página de origem, requisitos de atribuição e eventuais obrigações de compartilhar adaptações pela mesma licença. Textos Wikipedia seguem a licença indicada na fonte, normalmente CC BY-SA; dados estruturados Wikidata são disponibilizados sob CC0. Conteúdo Google segue seus [termos](https://cloud.google.com/maps-platform/terms) e [políticas](https://developers.google.com/maps/documentation/places/web-service/policies), incluindo regras de apresentação, atribuição e armazenamento. A cartografia OpenStreetMap exige atribuição e observa a [ODbL](https://www.openstreetmap.org/copyright).
 
