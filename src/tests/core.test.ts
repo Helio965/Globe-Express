@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { coordinatesSchema, destinationRequestSchema, referenceSchema, reverseRequestSchema, searchRequestSchema } from '@/lib/validation';
 import { distanceKm, formatCoordinates, referenceKey } from '@/lib/format';
-import { FAVORITES_KEY, parseSavedPlaces, readSavedPlaces, rememberPlace, savePlaces, toggleSavedPlace, type PlaceStorage } from '@/lib/saved-places';
+import { FAVORITES_KEY, RECENT_KEY, parseSavedPlaces, readSavedPlaces, rememberPlace, savePlaces, toggleSavedPlace, type PlaceStorage } from '@/lib/saved-places';
 import { LatestRequest } from '@/lib/latest-request';
 import type { PlaceReference } from '@/types/explorer';
 
@@ -75,6 +75,15 @@ describe('coordinates and distance', () => {
 });
 
 describe('privacy-preserving saved places', () => {
+  const legacyHistoryKey = 'world-explorer:history:v1';
+  function memoryStorage(initial: Record<string, string>) {
+    const values = new Map(Object.entries(initial));
+    return {
+      getItem: vi.fn((key: string) => values.get(key) ?? null),
+      setItem: vi.fn((key: string, value: string) => { values.set(key, value); }),
+    };
+  }
+
   it.each([null, '', 'not json', '{"not":"array"}', 'null', '[', ' '.repeat(50001)])('survives malformed storage %s', raw => {
     expect(parseSavedPlaces(raw)).toEqual([]);
   });
@@ -104,6 +113,49 @@ describe('privacy-preserving saved places', () => {
     expect(toggleSavedPlace([google, wikipedia], google)).toEqual([wikipedia]);
     expect(toggleSavedPlace([wikipedia], google)).toEqual([google, wikipedia]);
     expect(rememberPlace([wikipedia, google, coordinates], google)).toEqual([google, wikipedia, coordinates]);
+  });
+  it('restores valid legacy history when the current key is absent without mutating storage', () => {
+    const storage = memoryStorage({ [legacyHistoryKey]: JSON.stringify([wikipedia, google, coordinates, wikipedia]) });
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([wikipedia, google, coordinates]);
+    expect(storage.setItem).not.toHaveBeenCalled();
+    expect(readSavedPlaces(storage, FAVORITES_KEY)).toEqual([]);
+  });
+  it('rejects untrusted legacy records and external content', () => {
+    const storage = memoryStorage({ [legacyHistoryKey]: JSON.stringify([
+      { ...google, name: 'External name', photo: 'https://googleusercontent.com/photo' },
+      { provider: 'coordinates', lat: 100, lng: 0 },
+      { provider: 'wikipedia', id: '123', language: 'de' },
+      null,
+      wikipedia,
+    ]) });
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([wikipedia]);
+    expect(storage.setItem).not.toHaveBeenCalled();
+  });
+  it.each(['not json', '{"provider":"google","id":"ChIJverified_123"}'])('handles malformed legacy history %s', raw => {
+    const storage = memoryStorage({ [legacyHistoryKey]: raw });
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([]);
+    expect(storage.setItem).not.toHaveBeenCalled();
+  });
+  it('carries validated legacy references forward when remembering a new destination', () => {
+    const storage = memoryStorage({ [legacyHistoryKey]: JSON.stringify([wikipedia, coordinates]) });
+    const recent = rememberPlace(readSavedPlaces(storage, RECENT_KEY), google);
+    expect(savePlaces(storage, RECENT_KEY, recent)).toBe(true);
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([google, wikipedia, coordinates]);
+    expect(JSON.parse(storage.getItem(RECENT_KEY)!)).toEqual([google, wikipedia, coordinates]);
+    expect(storage.setItem).toHaveBeenCalledTimes(1);
+    expect(storage.setItem).toHaveBeenCalledWith(RECENT_KEY, expect.any(String));
+  });
+  it('keeps cleared history empty while legacy history still exists', () => {
+    const storage = memoryStorage({ [legacyHistoryKey]: JSON.stringify([wikipedia]) });
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([wikipedia]);
+    expect(savePlaces(storage, RECENT_KEY, [])).toBe(true);
+    expect(storage.getItem(legacyHistoryKey)).toBe(JSON.stringify([wikipedia]));
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([]);
+  });
+  it.each(['[]', 'not json', ''])('prefers an existing current history value %s over legacy history', raw => {
+    const storage = memoryStorage({ [RECENT_KEY]: raw, [legacyHistoryKey]: JSON.stringify([wikipedia]) });
+    expect(readSavedPlaces(storage, RECENT_KEY)).toEqual([]);
+    expect(storage.getItem).not.toHaveBeenCalledWith(legacyHistoryKey);
   });
 });
 

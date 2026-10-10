@@ -4,14 +4,14 @@ import type { ApiErrorBody, Coordinates, Destination, ExplorerConfig, Location, 
 import { apiJson, ClientError } from '@/lib/client-api';
 import { LatestRequest } from '@/lib/latest-request';
 import { referenceKey } from '@/lib/format';
-import { FAVORITES_KEY, RECENT_KEY, STORAGE_EVENT, parseSavedPlaces, rememberPlace, savePlaces, toggleSavedPlace } from '@/lib/saved-places';
+import { FAVORITES_KEY, RECENT_KEY, STORAGE_EVENT, parseSavedPlaces, readSavedPlaces, rememberPlace, savePlaces, toggleSavedPlace } from '@/lib/saved-places';
 
 function subscribe(callback: () => void) {
   window.addEventListener('storage', callback);
   window.addEventListener(STORAGE_EVENT, callback);
   return () => { window.removeEventListener('storage', callback); window.removeEventListener(STORAGE_EVENT, callback); };
 }
-function getStorage(key: string) { try { return window.localStorage.getItem(key) ?? '[]'; } catch { return '[]'; } }
+function getStorage(key: string) { try { return JSON.stringify(readSavedPlaces(window.localStorage, key)); } catch { return '[]'; } }
 const serverSnapshot = () => '[]';
 const favoriteSnapshot = () => getStorage(FAVORITES_KEY);
 const recentSnapshot = () => getStorage(RECENT_KEY);

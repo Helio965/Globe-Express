@@ -113,6 +113,36 @@ test('malformed local storage does not break exploration', async ({ page }) => {
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('world-explorer:favorites:v1')!))).toEqual([alphaReference]);
 });
 
+test('legacy history appears in Recentes, re-fetches destinations and stays cleared after reload', async ({ page }) => {
+  const state = await installTestApi(page);
+  await page.addInitScript(references => {
+    const key = 'world-explorer:history:v1';
+    if (localStorage.getItem(key) === null) localStorage.setItem(key, JSON.stringify(references));
+  }, [alphaReference, betaReference]);
+  await openReadyApp(page);
+  await page.getByRole('button', { name: 'Seus lugares' }).click();
+  await page.getByRole('button', { name: /Recentes/ }).click();
+  await expect(page.getByRole('dialog').locator('.saved-place')).toHaveCount(2);
+  expect(await page.evaluate(() => localStorage.getItem('world-explorer:recent:v1'))).toBeNull();
+  expect(state.destinations).toHaveLength(0);
+  await page.getByRole('dialog').locator('.saved-place').first().click();
+  await expect(page.getByRole('heading', { level: 1, name: alpha.location.name })).toBeVisible();
+  expect(state.destinations).toEqual([alphaReference]);
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('world-explorer:recent:v1')!))).toEqual([alphaReference, betaReference]);
+  await page.getByRole('button', { name: 'Seus lugares' }).click();
+  await page.getByRole('button', { name: /Recentes/ }).click();
+  await page.getByRole('button', { name: 'Limpar histórico' }).click();
+  await expect(page.getByText('O primeiro passo ainda está por vir.')).toBeVisible();
+  expect(await page.evaluate(() => localStorage.getItem('world-explorer:recent:v1'))).toBe('[]');
+  await page.reload();
+  await expect(page.getByRole('combobox')).toBeEnabled();
+  await page.getByRole('button', { name: 'Seus lugares' }).click();
+  await page.getByRole('button', { name: /Recentes/ }).click();
+  await expect(page.getByRole('dialog').locator('.saved-place')).toHaveCount(0);
+  await expect(page.getByText('O primeiro passo ainda está por vir.')).toBeVisible();
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('world-explorer:history:v1')!))).toEqual([alphaReference, betaReference]);
+});
+
 test('an absent search result and API quota failure allow another keyboard search', async ({ page }) => {
   await installTestApi(page);
   await page.route('**/api/search?*', route => {

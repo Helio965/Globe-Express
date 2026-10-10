@@ -17,6 +17,8 @@ Sem Google configurado, o projeto usa Leaflet com cartografia OpenStreetMap e pe
 
 Com as duas chaves Google configuradas, a aplicação utiliza Google Maps e Places API (New) para pesquisa, detalhes e lugares próximos, além de Geocoding para seleção por coordenadas. Wikipedia, Wikidata e Wikimedia Commons complementam as informações e fotografias quando houver correspondência confiável. As modalidades satélite e terreno dependem do Google Maps.
 
+Um clique identificado pela geocodificação Google só recebe conteúdo enciclopédico quando o nome corresponde ao artigo e este fica dentro de 1 km. As coordenadas escolhidas continuam intactas. Pontos sem identidade confirmada não recebem o conteúdo de um artigo vizinho.
+
 Não há integração obrigatória com inteligência artificial. Os textos apresentados são obtidos das fontes consultadas; ausência de documentação ou imagem é indicada na interface.
 
 ## Executar localmente
@@ -94,6 +96,8 @@ Tiles públicos OpenStreetMap têm uma [política de utilização](https://opera
 
 O navegador não recebe a chave Google de servidor. Dados de entrada e respostas externas são validados; conteúdo externo é tratado como texto. Favoritos e histórico armazenam referências, sem copiar fotografias, descrições, nomes, endereços ou respostas Google. Referências temporárias de fotografias Google também não são persistidas.
 
+O histórico da versão anterior (`world-explorer:history:v1`) é lido com a mesma validação quando a nova chave de recentes está ausente. Ao explorar novamente, as referências são transportadas para o novo armazenamento. Limpar o histórico impede que os registros antigos reapareçam. Os endereços `/privacidade` e `/termos` redirecionam para as páginas atuais.
+
 Fotografias Commons são descobertas a partir da imagem principal da entidade Wikidata (`P18`), da imagem principal do artigo e da categoria Commons vinculada à entidade. O sistema não incorpora indiscriminadamente todas as ilustrações de um artigo. Os arquivos passam por verificação de metadados, licença, autoria, resolução e formato; imagens identificadas como mapas, logotipos, bandeiras ou conteúdo sintético são descartadas. A vinculação da fonte reduz associações incorretas, mas não substitui uma revisão editorial de cada fotografia.
 
 Somente artigos Wikimedia consultados com sucesso possuem cache em memória, por 60 segundos e com limite de 64 entradas por processo. Conteúdo Google não é armazenado em cache. As respostas da API usam `Cache-Control: no-store`.
@@ -143,13 +147,23 @@ Os testes de serviços públicos ao vivo são opcionais, porque dependem da rede
 WORLD_EXPLORER_LIVE_TESTS=1 npm test -- src/tests/open-live.test.ts
 ```
 
+Para verificar a API de um servidor em execução com dados reais:
+
+```bash
+npm run test:live
+```
+
+`WORLD_EXPLORER_URL` permite indicar outra instalação. O script verifica seis destinos variados, oceano, busca inexistente e coordenadas inválidas; suas entradas são somente casos de aceitação. O workflow GitHub Actions preservado executa as verificações determinísticas e o Playwright, sem exigir credenciais ou executar esse smoke externo automaticamente.
+
 ### Validação registrada
 
 Os testes ao vivo das fontes públicas passaram **8/8**: pesquisa e resolução de Brasília, Pirâmides de Gizé, Monte Everest, Yosemite National Park, Praia de Copacabana e Tóquio, enriquecimento de Brasília, além de ponto oceânico e pesquisa inexistente. Brasília retornou 11 informações estruturadas, 10 fotografias licenciadas e 4 resultados próximos nessa execução. A imagem principal e uma miniatura oficial de 500 pixels responderam HTTP 200 com conteúdo de imagem. Esses números refletem a consulta realizada e podem mudar conforme as fontes.
 
-A suíte determinística registrou **124 testes aprovados** e **8 testes ao vivo ignorados** na execução padrão; estes últimos foram executados separadamente pelo comando opt-in acima. O adaptador Google possui 14 testes unitários aprovados com respostas controladas. A documentação oficial Google consultada respondeu HTTP 200.
+A suíte determinística registrou **138 testes aprovados** e **8 testes ao vivo ignorados** na execução padrão; estes últimos foram executados separadamente pelo comando opt-in acima. O adaptador Google possui 14 testes unitários aprovados com respostas controladas. A documentação oficial Google consultada respondeu HTTP 200.
 
-`npm run check` concluiu sem erros, incluindo lint, TypeScript estrito, testes e build de produção. Os **23 testes Playwright passaram** contra esse build, sem novas tentativas: exploração contínua, galeria, mapa persistente, teclado, favoritos, recuperação de erros, concorrência de consultas e telas de 320, 390 e 844 pixels. O navegador também pesquisou Brasília nos serviços reais, abriu a apresentação e os detalhes, navegou pela galeria e retornou ao mapa. Tiles OpenStreetMap e imagens Wikimedia responderam HTTP 200 com verificação HTTPS ativa; não houve erros de JavaScript, falhas de requisição ou transbordamento horizontal na tela móvel. A auditoria das dependências de produção registrou zero vulnerabilidades.
+O smoke da API também passou **9/9 verificações com dados reais**. Todos os seis destinos retornaram fotografias, autoria, licença e fontes. Oceano e busca inexistente preservaram seus resultados vazios; latitude inválida retornou HTTP 400.
+
+`npm run check` concluiu sem erros, incluindo lint, TypeScript estrito, testes e build de produção. Os **24 testes Playwright passaram** contra esse build, sem novas tentativas: exploração contínua, galeria, mapa persistente, teclado, favoritos, migração do histórico, recuperação de erros, concorrência de consultas e telas de 320, 390 e 844 pixels. O navegador também pesquisou Brasília nos serviços reais, abriu a apresentação e os detalhes, navegou pela galeria e retornou ao mapa. Tiles OpenStreetMap e imagens Wikimedia responderam HTTP 200 com verificação HTTPS ativa; não houve erros de JavaScript, falhas de requisição ou transbordamento horizontal na tela móvel. A auditoria das dependências de produção registrou zero vulnerabilidades.
 
 As chaves Google continuam ausentes neste ambiente. Portanto, mapa, pesquisa, geocodificação e fotografias Google **não foram validados ao vivo**. Configure as duas chaves e realize os passos de aceitação descritos acima. O acesso real a Wikimedia foi validado; o bloqueio inicial de rede foi resolvido. Implementar uma integração ou testar seu adaptador com respostas controladas não comprova a validação do provedor real.
 

@@ -3,6 +3,7 @@ import { referenceSchema } from './validation';
 import { referenceKey } from './format';
 export const FAVORITES_KEY = 'world-explorer:favorites:v1';
 export const RECENT_KEY = 'world-explorer:recent:v1';
+const LEGACY_HISTORY_KEY = 'world-explorer:history:v1';
 export const STORAGE_EVENT = 'world-explorer:saved-places';
 export interface PlaceStorage { getItem(key: string): string | null; setItem(key: string, value: string): void }
 export function parseSavedPlaces(raw: string | null): PlaceReference[] {
@@ -19,7 +20,12 @@ export function parseSavedPlaces(raw: string | null): PlaceReference[] {
   } catch { return []; }
 }
 export function readSavedPlaces(storage: PlaceStorage, key: string): PlaceReference[] {
-  try { return parseSavedPlaces(storage.getItem(key)); } catch { return []; }
+  try {
+    const raw = storage.getItem(key);
+    // A saved empty list is intentional: clearing history must not restore it.
+    const stored = key === RECENT_KEY && raw === null ? storage.getItem(LEGACY_HISTORY_KEY) : raw;
+    return parseSavedPlaces(stored);
+  } catch { return []; }
 }
 export function savePlaces(storage: PlaceStorage, key: string, places: PlaceReference[]): boolean {
   try {

@@ -2,6 +2,12 @@ import type { NextConfig } from 'next';
 const config: NextConfig = {
   poweredByHeader: false,
   allowedDevOrigins: ['127.0.0.1'],
+  async redirects() {
+    return [
+      { source: '/privacidade', destination: '/privacy', permanent: true },
+      { source: '/termos', destination: '/terms', permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: '/:path*', headers: [
       { key: 'X-Content-Type-Options', value: 'nosniff' },

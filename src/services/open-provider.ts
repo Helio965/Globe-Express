@@ -90,7 +90,7 @@ export async function enrichOpenLocation(location: Location, signal?: AbortSigna
   let article: WikiArticle | undefined;
   if (location.reference.provider === 'wikipedia') {
     try { article = await getWikipediaArticle(location.reference.id, location.reference.language, signal); } catch { abortIfRequested(signal); warnings.push(warning('Wikipedia', 'Não foi possível recuperar o conteúdo enciclopédico agora.')); }
-  } else if (location.reference.provider === 'google') {
+  } else if (location.reference.provider === 'google' || (location.reference.provider === 'coordinates' && location.attributions.includes('Google Maps') && location.kind !== 'coordinates')) {
     try {
       const names = normalizedName(location.name);
       const match = (await nearbyArticles(location.coordinates, 1000, 10, signal)).find((candidate) => normalizedName(candidate.title) === names);

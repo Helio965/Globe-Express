@@ -106,6 +106,54 @@ describe('provedor público geográfico', () => {
     for (const [url] of mocked.upstream.mock.calls as [URL][]) expect(url.searchParams.get('list')).toBe('geosearch');
   });
 
+  it('enriquece um clique identificado pelo Google com nome correspondente sem mover as coordenadas', async () => {
+    const coordinates = { lat: -15.70123, lng: -47.90123 };
+    const location: Location = { reference: { provider: 'coordinates', ...coordinates }, name: 'CIDADE ÁRVORE', coordinates: { ...coordinates }, kind: 'locality', attributions: ['Google Maps'] };
+    mocked.upstream.mockImplementation((url: URL) => {
+      if (url.searchParams.get('list') === 'geosearch') return Promise.resolve({ query: { geosearch: url.searchParams.get('gsradius') === '1000' ? [{ pageid: 99011, title: 'Cidade Arvore', lat: -15.7, lon: -47.9, dist: 180 }] : [] } });
+      return Promise.resolve({ query: { pages: [{ ...page, pageid: 99011, title: 'Cidade Arvore', pageprops: {} }] } });
+    });
+    const content = await enrichOpenLocation(location);
+    expect(content.summary).toBe('Uma descrição factual.');
+    expect(content.sources).toContainEqual({ name: 'Wikipedia (português) · CC BY-SA', url: 'https://pt.wikipedia.org/wiki/Cidade_Arvore' });
+    expect(location.coordinates).toEqual(coordinates);
+    expect(location.reference).toEqual({ provider: 'coordinates', ...coordinates });
+    expect(content.facts.map((fact) => fact.value)).toEqual(['-15.701230°', '-47.901230°']);
+  });
+
+  it('não atribui ao clique identificado pelo Google um artigo próximo com outro nome', async () => {
+    const location: Location = { ...coordinateLocation, name: 'Cidade escolhida', kind: 'locality', attributions: ['Google Maps'] };
+    mocked.upstream.mockImplementation((url: URL) => Promise.resolve({ query: { geosearch: url.searchParams.get('gsradius') === '1000' ? [{ pageid: 99012, title: 'Cidade diferente', lat: 0, lon: -140, dist: 10 }] : [] } }));
+    const content = await enrichOpenLocation(location);
+    expect(content.summary).toContain('Não há uma identidade enciclopédica confirmada');
+    expect(content.sources).toEqual([]);
+    for (const [url] of mocked.upstream.mock.calls as [URL][]) expect(url.searchParams.get('list')).toBe('geosearch');
+  });
+
+  it('não associa um artigo de mesmo nome fora de um quilômetro ao clique identificado pelo Google', async () => {
+    const location: Location = { ...coordinateLocation, name: 'Cidade distante', kind: 'locality', attributions: ['Google Maps'] };
+    mocked.upstream.mockImplementation((url: URL) => Promise.resolve({ query: { geosearch: url.searchParams.get('gsradius') === '1000' ? [{ pageid: 99013, title: 'Cidade distante', lat: 0.02, lon: -140, dist: 1001 }] : [] } }));
+    const content = await enrichOpenLocation(location);
+    expect(content.summary).toContain('Não há uma identidade enciclopédica confirmada');
+    expect(content.sources).toEqual([]);
+    for (const [url] of mocked.upstream.mock.calls as [URL][]) expect(url.searchParams.get('list')).toBe('geosearch');
+  });
+
+  it.each([
+    { label: 'Google sem resultado de geocodificação', name: '0.0000°, -140.0000°', kind: 'coordinates', attributions: ['Google Maps'] },
+    { label: 'ponto público próximo de um artigo', name: 'Ponto próximo a Praça próxima', kind: 'Coordenadas selecionadas · 120 m de um local documentado', attributions: ['Coordenadas selecionadas pelo usuário'] },
+  ])('preserva $label sem buscar uma identidade enciclopédica para o ponto', async ({ name, kind, attributions }) => {
+    mocked.upstream.mockResolvedValue({ query: { geosearch: [] } });
+    const content = await enrichOpenLocation({ ...coordinateLocation, name, kind, attributions });
+    expect(content.summary).toContain('Não há uma identidade enciclopédica confirmada');
+    expect(content.photos).toEqual([]);
+    expect(content.sources).toEqual([]);
+    for (const [url] of mocked.upstream.mock.calls as [URL][]) {
+      expect(url.searchParams.get('list')).toBe('geosearch');
+      expect(url.searchParams.get('gsradius')).toBe('10000');
+    }
+  });
+
   it('mantém texto factual quando Wikidata e fotos falham', async () => {
     mocked.upstream.mockImplementation((url: URL) => {
       if (url.searchParams.get('list') === 'geosearch') return Promise.resolve({ query: { geosearch: [] } });
