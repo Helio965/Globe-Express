@@ -17,6 +17,8 @@ Os scripts não interceptam requisições, não usam as fixtures dos testes e n�
 | `screenshots/06-gallery.png` | Outra fotografia da galeria | 1920 × 998 |
 | `screenshots/07-favorites.png` | Destino salvo na lista de favoritos | 1920 × 1080 |
 | `screenshots/08-mobile.png` | Seção cinematográfica móvel completa, incluindo os créditos | 393 × 855 |
+| `video/index.html` | Player estático com controles nativos e links de download | Responsivo |
+| `MEDIA_CREDITS.html` | Versão dos créditos para leitura no navegador | Responsivo |
 | `video/world-explorer-demo.mp4` | Demonstração editada com explicações em português | Consulte `render-info.json` |
 | `video/video-thumbnail.png` | Miniatura retirada de um quadro da cena cinematográfica | Consulte `render-info.json` |
 | `video/subtitles-pt-br.srt` | Legendas em arquivo separado | — |
@@ -148,3 +150,11 @@ Revise também o vídeo, a miniatura e os sete PNGs visualmente: dados carregado
 Consulte [`MEDIA_CREDITS.md`](MEDIA_CREDITS.md) antes de reutilizar ou publicar os arquivos. A licença MIT do código não se estende automaticamente às fotografias, aos mapas e aos textos de terceiros. O enquadramento, a redução e a montagem do vídeo não eliminam as condições de atribuição das fontes originais.
 
 Ao repetir a captura, os provedores podem retornar fotografias, autores, licenças e locais próximos diferentes. **Confira novamente as páginas de origem e atualize os créditos de acordo com o novo manifesto.** Reavalie também permissões de redistribuição se decidir capturar conteúdo Google. Este conjunto demonstra o conteúdo efetivamente obtido para Lisboa; não comprova a cobertura de todos os destinos nem a integração Google Maps.
+
+## Reprodução publicada
+
+A miniatura do README abre [o player no GitHub Pages](https://helio965.github.io/Globe-Express/), com controles nativos, reprodução em tela cheia e downloads do vídeo e das legendas. `video/index.html` funciona também em qualquer servidor estático que sirva este diretório; não precisa executar a aplicação para reproduzir o material.
+
+A branch `gh-pages` contém somente uma cópia dos arquivos da demonstração, dos créditos e da licença, com `.nojekyll`; o GitHub Pages publica a raiz dessa branch. Essa página é a documentação do vídeo. A aplicação Next.js continua exigindo o runtime e a configuração descritos no README principal.
+
+`MEDIA_CREDITS.html` foi gerado de `MEDIA_CREDITS.md` pelo renderizador Markdown do GitHub. Ao atualizar fontes ou licenças, atualize ambas as versões e publique novamente os arquivos estáticos. A gravação mantém um link permanente para os créditos do commit correspondente, preservando as atribuições daquela edição.

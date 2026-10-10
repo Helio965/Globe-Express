@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demonstração real do World Explorer: pesquisa, fotografias, detalhes, favoritos e histórico, com explicações em português.">
+    <title>World Explorer — Demonstração</title>
+    <style>
+      :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #101c1e; color: #f4f1e9; }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      main { width: min(1120px, 100%); margin: auto; padding: 40px 20px; }
+      .eyebrow { color: #dcc28b; font-size: .8rem; letter-spacing: .16em; }
+      h1 { margin: 12px 0; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; }
+      p { line-height: 1.7; color: #c1cbc7; }
+      video { display: block; width: 100%; aspect-ratio: 16 / 9; margin: 24px 0; background: #080e10; border: 1px solid #425351; border-radius: 8px; }
+      nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; }
+      a { color: #dcc28b; text-underline-offset: .2em; }
+      a:focus-visible { outline: 2px solid #dcc28b; outline-offset: 6px; }
+      footer { border-top: 1px solid #425351; margin-top: 32px; padding-top: 12px; font-size: .85rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">DEMONSTRAÇÃO DO SISTEMA</p>
+      <h1>World Explorer</h1>
+      <p>Explore Lisboa pela interface real: pesquisa de destinos, apresentação cinematográfica, fotografias, informações detalhadas, lugares próximos, favoritos e histórico.</p>
+      <video controls playsinline preload="metadata" poster="video-thumbnail.png" aria-label="Demonstração do World Explorer com explicações em português brasileiro">
+        <source src="world-explorer-demo.mp4" type="video/mp4">
+        Seu navegador não reproduziu o vídeo. <a href="world-explorer-demo.mp4">Baixe o MP4 para assistir.</a>
+      </video>
+      <p>1 minuto e 34 segundos · Full HD · Explicações e legendas em português brasileiro.<br>Vídeo sem narração e sem música. O mapa Google não aparece nesta demonstração.</p>
+      <nav aria-label="Arquivos da demonstração">
+        <a href="world-explorer-demo.mp4" download>Baixar vídeo</a>
+        <a href="subtitles-pt-br.srt" download>Baixar legendas SRT</a>
+        <a href="../MEDIA_CREDITS.html">Autores, fontes e licenças</a>
+        <a href="https://github.com/Helio965/Globe-Express">Repositório do projeto</a>
+      </nav>
+      <footer>
+        <p>Capturas e edição: © 2026 Hélio / Globe-Express — <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Fotografias e textos conservam as atribuições e licenças de origem indicadas nos créditos.</p>
+      </footer>
+    </main>
+  </body>
+</html>
