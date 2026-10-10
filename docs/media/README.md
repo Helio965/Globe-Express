@@ -151,10 +151,14 @@ Consulte [`MEDIA_CREDITS.md`](MEDIA_CREDITS.md) antes de reutilizar ou publicar 
 
 Ao repetir a captura, os provedores podem retornar fotografias, autores, licenças e locais próximos diferentes. **Confira novamente as páginas de origem e atualize os créditos de acordo com o novo manifesto.** Reavalie também permissões de redistribuição se decidir capturar conteúdo Google. Este conjunto demonstra o conteúdo efetivamente obtido para Lisboa; não comprova a cobertura de todos os destinos nem a integração Google Maps.
 
-## Reprodução publicada
+## Publicar o player
 
-A miniatura do README abre [o player no GitHub Pages](https://helio965.github.io/Globe-Express/), com controles nativos, reprodução em tela cheia e downloads do vídeo e das legendas. `video/index.html` funciona também em qualquer servidor estático que sirva este diretório; não precisa executar a aplicação para reproduzir o material.
+`video/index.html` oferece controles nativos, reprodução em tela cheia e downloads do vídeo e das legendas. Ele funciona em qualquer servidor estático que sirva este diretório; não precisa executar a aplicação para reproduzir o material. O player e a ausência de overflow mobile foram verificados no Chromium.
 
-A branch `gh-pages` contém somente uma cópia dos arquivos da demonstração, dos créditos e da licença, com `.nojekyll`; o GitHub Pages publica a raiz dessa branch. Essa página é a documentação do vídeo. A aplicação Next.js continua exigindo o runtime e a configuração descritos no README principal.
+A branch `gh-pages` já contém uma cópia dos arquivos da demonstração, dos créditos e da licença, com `.nojekyll`. A integração do GitHub não permite ativar Pages: a API retornou HTTP 403, “Resource not accessible by integration”. A publicação do player ainda não foi concluída.
+
+Para ativá-lo, abra **Settings → Pages** no repositório, escolha **Deploy from a branch**, selecione **gh-pages** e **/(root)**, e salve. Após o deploy, o endereço esperado é `https://helio965.github.io/Globe-Express/`. Confira a reprodução, os downloads e os créditos antes de substituir o link da miniatura no README por esse endereço. O MP4 já pode ser baixado diretamente pelo link publicado no README.
+
+Essa página é a documentação do vídeo. A aplicação Next.js continua exigindo o runtime e a configuração descritos no README principal.
 
 `MEDIA_CREDITS.html` foi gerado de `MEDIA_CREDITS.md` pelo renderizador Markdown do GitHub. Ao atualizar fontes ou licenças, atualize ambas as versões e publique novamente os arquivos estáticos. A gravação mantém um link permanente para os créditos do commit correspondente, preservando as atribuições daquela edição.

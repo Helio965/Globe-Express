@@ -12,9 +12,11 @@ Ao clicar em um ponto de interesse do mapa Google, seu identificador é usado pa
 
 Conheça o fluxo real de exploração de Lisboa: pesquisa com sugestões, apresentação cinematográfica, troca de fotografias, informações detalhadas, lugares próximos, favoritos e histórico. A gravação utiliza dados da Wikipedia, Wikidata e Wikimedia Commons, consultados pela aplicação em funcionamento.
 
-[![Assistir à demonstração real do World Explorer](docs/media/video/video-thumbnail.png)](https://helio965.github.io/Globe-Express/)
+[![Baixar a demonstração real do World Explorer](docs/media/video/video-thumbnail.png)](https://raw.githubusercontent.com/Helio965/Globe-Express/e62767dfea4f5fc65a46ea85b5b3f0421625a1a1/docs/media/video/world-explorer-demo.mp4)
 
-**94 segundos em Full HD, 30 fps; MP4 de 4,35 MiB, com explicações em português brasileiro.** Não foi gerado áudio narrado: as explicações aparecem em uma faixa externa à interface, acompanhadas de uma trilha de legendas e do [arquivo SRT](docs/media/video/subtitles-pt-br.srt). O vídeo não contém música. [Assistir no navegador](https://helio965.github.io/Globe-Express/) · [Abrir o MP4](docs/media/video/world-explorer-demo.mp4) · [Baixar o vídeo](https://raw.githubusercontent.com/Helio965/Globe-Express/e62767dfea4f5fc65a46ea85b5b3f0421625a1a1/docs/media/video/world-explorer-demo.mp4).
+**94 segundos em Full HD, 30 fps; MP4 de 4,35 MiB, com explicações em português brasileiro.** Não foi gerado áudio narrado: as explicações aparecem em uma faixa externa à interface, acompanhadas de uma trilha de legendas e do [arquivo SRT](docs/media/video/subtitles-pt-br.srt). O vídeo não contém música. [Abrir o MP4](docs/media/video/world-explorer-demo.mp4) · [Baixar o vídeo](https://raw.githubusercontent.com/Helio965/Globe-Express/e62767dfea4f5fc65a46ea85b5b3f0421625a1a1/docs/media/video/world-explorer-demo.mp4).
+
+O [player HTML](docs/media/video/index.html) também está pronto. Sua publicação no GitHub Pages aguarda ativação nas configurações do repositório; até lá, a miniatura abre o MP4 para download. Consulte as [instruções de ativação](docs/media/README.md#publicar-o-player).
 
 As capturas e a edição são distribuídas sob CC BY-SA 4.0; textos e fotografias conservam seus créditos e licenças de origem. Consulte [autores, fontes e adaptações](docs/media/MEDIA_CREDITS.md). Os [detalhes técnicos da gravação](docs/media/video/render-info.json) e as [instruções para reproduzir as mídias](docs/media/README.md) também estão disponíveis.
 
